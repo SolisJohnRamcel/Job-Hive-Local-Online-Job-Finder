@@ -1,0 +1,12 @@
+  /* Define a CSS variable for active nav pill background color */
+  :root {
+    --active-nav-color: #d7a343; /* Default to Bootstrap blue */
+    --active-text-color: #000000;
+  }
+
+  .nav-link.active,
+  .nav-link.active:focus,
+  .nav-link.active:hover {
+    color: var(--active-text-color) !important;
+    background-color: var(--active-nav-color) !important;
+  }

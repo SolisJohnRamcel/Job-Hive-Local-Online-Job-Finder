@@ -1,0 +1,1 @@
+<a class="me-3 py-2 link-body-emphasis text-decoration-none text-dark " style="font-family: Poppins;" {{ $attributes }}>{{ $slot }}</a>

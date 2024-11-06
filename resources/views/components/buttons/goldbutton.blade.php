@@ -1,0 +1,1 @@
+<button type="submit" class="btn" style="background-color: #d7a343;"><div style="color: white;">{{ $slot }}</div></button>
