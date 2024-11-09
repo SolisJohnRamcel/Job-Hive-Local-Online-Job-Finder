@@ -1,20 +1,35 @@
-<header class="d-flex flex-wrap align-items-center justify-content-between py-2 mb-4 border-bottom">
-            <div class="d-flex align-items-center me-2">
-                <a href="/" class="ps-lg-3 d-flex align-items-center mb-3 mb-md-0 me-md-3 link-body-emphasis text-decoration-none">
-                <img src="{{ URL('assets/img/Job Hive_icon.png')}}" width="50" height="50" alt="Job Hive Logo">
-                <strong class="text-dark">Job Hive</strong>
-                </a>
-            </div>      
-            <form class="d-flex flex-grow-1 me-2" style="max-width: 500px;" role="search">
-                <input class="form-control me-2 flex-grow-1" type="search" placeholder="Find Jobs" aria-label="Search">
-                <button class="btn" style="background-color: #f7c15d;" type="submit me-2">
-                <img src="{{ URL('assets/img/search_icon.png') }}" width="16" height="16" alt="Search Icon">
+<header class="navbar navbar-expand-lg py-2 mb-4 border-bottom">
+    <div class="container">
+        <!-- Logo -->
+        <a href="/" class="navbar-brand d-flex align-items-center">
+            <img src="{{ URL('assets/img/Job Hive_icon.png')}}" width="50" height="50" alt="Job Hive Logo">
+            <strong class="text-dark ms-2">Job Hive</strong>
+        </a>
+
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible Content -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <!-- Search Form -->
+            <form class="d-flex mx-lg-3 my-2 my-lg-0 flex-grow-1" style="max-width: 500px;" role="search">
+                <input class="form-control me-2" type="search" placeholder="Find Jobs" aria-label="Search">
+                <button class="btn" style="background-color: #f7c15d;" type="submit">
+                    <img src="{{ URL('assets/img/search_icon.png') }}" width="16" height="16" alt="Search Icon">
                 </button>
             </form>
-            <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                <x-layout.navlink href="/">Home</x-layout.navlink>
-                <x-layout.navlink href="/about">About</x-layout.navlink>
-                <x-layout.navlink href="/contact">Contact</x-layout.navlink>
-                <x-layout.navlink2 href="/signin">Sign in</x-layout.navlink2>
+
+            <!-- Navigation Links -->
+            <nav class="ms-lg-auto">
+                <div class="navbar-nav">
+                    <x-layout.navlink href="/">Home</x-layout.navlink>
+                    <x-layout.navlink href="/about">About</x-layout.navlink>
+                    <x-layout.navlink href="/contact">Contact</x-layout.navlink>
+                    <x-layout.navlink2 href="/signin">Sign in</x-layout.navlink2>
+                </div>
             </nav>
+        </div>
+    </div>
 </header>
