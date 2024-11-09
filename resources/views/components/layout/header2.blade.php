@@ -1,4 +1,4 @@
-<header class="navbar navbar-expand-lg py-2 mb-4 border-bottom">
+<header class="navbar navbar-expand-lg py-2 border-bottom">
     <div class="container">
         <!-- Logo -->
         <a href="/" class="navbar-brand d-flex align-items-center">

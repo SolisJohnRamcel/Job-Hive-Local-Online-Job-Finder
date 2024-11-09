@@ -6,9 +6,6 @@
 
     <!-- Sidebar -->
     <div class="offcanvas-lg offcanvas-start text-bg-dark" tabindex="-1" id="sidebar" style="width: 220px; max-width: 100%;">
-        <div class="offcanvas-header d-lg-none">
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"></button>
-        </div>
         
         <div class="offcanvas-body d-flex flex-column p-3 h-100">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">

@@ -35,7 +35,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12 mb-4">
+                    <div class="col-12 mb-1">
                         <div class="position-relative">
                             <input placeholder="*****" id="formConfirmSignupPassword" class="form-control @error('confirm_password') is-invalid @enderror" type="password" name="confirm_password">
                             <span class="password-toggle position-absolute top-50 end-0 translate-middle-y pe-3" style="cursor: pointer;">
@@ -46,6 +46,8 @@
                             @enderror
                         </div>
                     </div>
+
+                    <div class="dont-have">Already have an account? <a class="text-decoration-none" style="color: #d49326;" href="/signin">Sign In</a></div>
 
 
                         <div class="d-grid col-12 mb-2">

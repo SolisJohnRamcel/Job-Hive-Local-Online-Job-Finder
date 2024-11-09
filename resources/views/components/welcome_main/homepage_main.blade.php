@@ -1,17 +1,16 @@
 <main>
-    <div class="bg-image" style="background-image: url('{{ URL('assets/img/shanghai2.jpg') }}'); background-repeat: no-repeat; background-position: center center; background-size: cover; min-height: 500px;">
-        <div class="container">
-            <div class="row min-vh-50">
-                <div class="col-12 col-md-8 col-lg-6 px-4 py-5">
-                    <div class="text-center text-md-start">
-                        <h1 class="text-white display-6 fw-bold mt-4">Welcome to Job Hive Local!</h1>
-                        <p class="lead text-white">Introducing a new model for online job searching, helping you find available jobs in your local area.</p>
-                        <a role="button" class="btn rounded-pill text-white" style="background-color: #947439;" href="/signup">Join Us</a>
-                    </div>
+    <div class="bg-image" style="background-image: url('{{ URL('assets/img/shanghai2.jpg') }}'); background-repeat: no-repeat; background-position: center center; background-size: cover; min-height: 600px; height: 100vh;">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center">
+                <div class="col-12 col-md-8 col-lg-10 text-center">
+                    <h1 class="text-white display-2 fw-bold mb-4">Welcome to Job Hive Local!</h1>
+                    <p class="lead text-white fs-1 mb-5">Introducing a new model for online job searching, helping you find available jobs in your local area.</p>
+                    <a role="button" class="btn btn-lg rounded-pill text-white px-5 py-3" style="background-color: #947439;" href="/signup">Join Us</a>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="container mt-5">
         <div class="row">
