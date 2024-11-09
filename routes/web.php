@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\auth;
+use App\Http\Controllers\view;
 
 Route::get('/', function () {
     return view('home');
@@ -19,10 +19,10 @@ Route::get('/user', function () {
     return view('user');
 });
 
-Route::get('/signin', [auth::class, 'signin']);
+Route::get('/signin', [view::class, 'signin']);
 
-Route::get('/signup',  [auth::class, 'signup']);
+Route::get('/signup',  [view::class, 'signup']);
 
-Route::get('/resetpass',  [auth::class, 'resetpass']);
+Route::get('/resetpass',  [view::class, 'resetpass']);
 
-Route::get('/user',  [auth::class, 'user']);
+Route::get('/user',  [view::class, 'user']);
