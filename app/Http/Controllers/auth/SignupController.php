@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 
-class signupController extends Controller
+class SignupController extends Controller
 {
     public function store(Request $request)
     {

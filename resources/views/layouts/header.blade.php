@@ -24,10 +24,10 @@
             <!-- Navigation Links -->
             <nav class="ms-lg-auto">
                 <div class="navbar-nav">
-                    <x-layout.navlink href="/">Home</x-layout.navlink>
-                    <x-layout.navlink href="/about">About</x-layout.navlink>
-                    <x-layout.navlink href="/contact">Contact</x-layout.navlink>
-                    <x-layout.navlink2 href="/signin">Sign in</x-layout.navlink2>
+                    <x-navlink href="/">Home</x-navlink>
+                    <x-navlink href="/about">About</x-navlink>
+                    <x-navlink href="/contact">Contact</x-navlink>
+                    <x-navlink2 href="/signin">Sign in</x-navlink2>
                 </div>
             </nav>
         </div>

@@ -23,6 +23,11 @@ class view extends Controller
 
     public function user()
     {
-        return view("jobseeker.user");
+        return view("user");
+    }
+
+    public function dashboard()
+    {
+        return view("dashboard");
     }
 }
