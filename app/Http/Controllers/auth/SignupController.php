@@ -5,10 +5,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Auth\Events\Registered;
+use Illuminate\View\View;
 
 class SignupController extends Controller
-{
+{   
+    public function create(): View
+    {
+        return view('auth.signup');
+    }
     public function store(Request $request)
     {
         $validatedData = $request->validate([

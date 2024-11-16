@@ -15,6 +15,7 @@
 </head>
 <body>
     <div class="d-flex min-vh-100 overflow-hidden">
+        
         <!-- Sidebar -->
         <div class="offcanvas-lg offcanvas-start text-bg-dark" tabindex="-1" id="sidebar" style="width: 250px;">
             <div class="offcanvas-body d-flex flex-column p-3 h-100">
@@ -26,24 +27,24 @@
                 <hr class="my-3">
                 
                 <ul class="nav nav-pills flex-column mb-auto">
-                    <li><a href="#" class="nav-link text-white">Personal Information</a></li>
-                    <li><a href="#" class="nav-link text-white">Employment status</a></li>
-                    <li><a href="#" class="nav-link text-white">Job Preferences</a></li>
-                    <li><a href="#" class="nav-link text-white">Language/Dialect</a></li>
-                    <li><a href="#" class="nav-link text-white">Educational Bacground</a></li>
-                    <li><a href="#" class="nav-link text-white">Certification Training</a></li>
-                    <li><a href="#" class="nav-link text-white">Work Experience</a></li>
-                    <li><a href="#" class="nav-link text-white">Other skill</a></li>
-                    <li><a href="#" class="nav-link text-white">Certification/Authorization</a></li>
+                    <li><a href="#" class="nav-link text-white">Dashboard</a></li>
+                    <li><a href="#" class="nav-link text-white">=</a></li>
+                    <li><a href="#" class="nav-link text-white">=</a></li>
+                    <li><a href="#" class="nav-link text-white">=</a></li>
+                    <li><a href="#" class="nav-link text-white">=</a></li>
+                    <li><a href="#" class="nav-link text-white">=</a></li>
+                    <li><a href="#" class="nav-link text-white">=</a></li>
+                    <li><a href="#" class="nav-link text-white">=</a></li>
+                    <li><a href="#" class="nav-link text-white">=</a></li>
                 </ul>
                 
-                <div class="dropdown dropdown mt-auto">
+                <div class="dropdown dropup mt-auto">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
                         <img src="{{ URL('assets/img/Job Hive_icon.png')}}" alt="" width="32" height="32" class="rounded-circle me-2">
                         <strong>{{ Auth::user()->name }}</strong>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end text-small shadow">
-                        <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Settings</a></li>
+                        <li><a class="dropdown-item" href="{{ route('employerprofile.edit') }}">Settings</a></li>
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
@@ -58,7 +59,7 @@
         </div>
 
         <!-- Main Content and Header -->
-        <div class="flex-grow-1 d-flex flex-column">
+        <div class="flex-grow-1">
             <!-- Mobile Header -->
             <div class="bg-dark d-lg-none w-100 position-fixed top-0 start-0 p-1 d-flex align-items-center" style="z-index: 1030;">
                 <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
@@ -68,11 +69,10 @@
 
             <!-- Main Content Area -->
             <div class="container p-4">
-                @yield('content')
+                    @yield('content')
             </div>
         </div>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

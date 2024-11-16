@@ -11,16 +11,18 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\SignupController;
 use App\Http\Controllers\Auth\SigninController;
+use App\Http\Controllers\Auth\Resetpass;
+
 
 Route::middleware('guest')->group(function () {
-    Route::get('/signin', [view::class, 'signin'])-> name("signin");
+    Route::get('/signin', [SigninController::class, 'create'])-> name("signin");
     Route::post('/signin', [SigninController::class, 'store'])->name('signin.store');
 
-    Route::get('/signup',  [view::class, 'signup'])->name('signup');
+    Route::get('/signup',  [SignupController::class, 'create'])->name('signup');
     Route::post('/signup', [SignupController::class, 'store'])->name('signup.store');
 
 
-    Route::get('/resetpass',  [view::class, 'resetpass']);
+    Route::get('/resetpass',  [Resetpass::class, 'resetpass']);
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
@@ -36,9 +38,6 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-
-    Route::get('/dashboard', [view::class, 'dashboard'])->name('dashboard');
-
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 

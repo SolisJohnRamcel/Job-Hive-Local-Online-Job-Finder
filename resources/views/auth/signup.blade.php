@@ -3,9 +3,9 @@
 @include('layouts.normal_header')
 
 @section('content')
-<div class="container min-vh-100 d-flex align-items-center">
+<div class="container min-vh-75 d-flex align-items-center align-items-md-center pt-5">
     <div class="row justify-content-center w-100">
-        <div class="col-lg-4 col-md-6 col-10">
+        <div class="col-lg-5 col-md-7 col-11 mb-5">
             <div class="card shadow-sm">
                 <div class="card-body p-4">
                     <div class="mb-5">
@@ -61,11 +61,7 @@
                             <div class="d-grid col-12 mb-3">
                                 <x-buttons.goldbutton type="submit">Register</x-buttons.goldbutton>
                             </div>
-                        </div>
-                        
-                        <p class="text-center mb-0">
-                            <small>By continuing, you agree to our <a class="text-decoration-none" style="color: #d49326;" href="#!">Terms of Service</a> & <a class="text-decoration-none" style="color: #d49326;" href="#!">Privacy Policy</a></small>
-                        </p>
+                        </div> 
                     </form>
                 </div>
             </div>

@@ -19,5 +19,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets/js/togglepass_visibility.js')}}"></script>
+    <script src="{{ asset('assets/js/success_3s.js')}}"></script>
 </body>
 </html>

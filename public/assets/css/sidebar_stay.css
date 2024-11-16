@@ -1,0 +1,14 @@
+/* Sidebar Styles */
+#sidebar {
+    position: fixed; /* Make the sidebar stay in place */
+    top: 0;
+    left: 0;
+    height: 100vh; /* Full height of the viewport */
+    width: 250px; /* Sidebar width */
+}
+/* Ensure the sidebar stays above the header */
+#sidebar {
+    z-index: 1040; /* Sidebar on top */
+    
+}
+

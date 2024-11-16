@@ -1,28 +1,41 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const navLinks = document.querySelectorAll('.nav-link');
-  
-  navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-          // Remove active class from all links
-          navLinks.forEach(l => {
-              l.classList.remove('active');
-              l.setAttribute('aria-current', 'false');
-          });
-          
-          // Add active class to clicked link
-          this.classList.add('active');
-          this.setAttribute('aria-current', 'page');
-          
-          // Store active link in localStorage
-          localStorage.setItem('activeLink', this.getAttribute('href'));
-      });
-  });
-  
-  // Check for active link on page load
-  const currentPath = window.location.pathname;
-  const activeLink = document.querySelector(`.nav-link[href="${currentPath}"]`);
-  if (activeLink) {
-      activeLink.classList.add('active');
-      activeLink.setAttribute('aria-current', 'page');
-  }
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    function setActiveState() {
+        const currentPath = window.location.pathname;
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'page');
+                localStorage.setItem('activeLink', currentPath);
+            } else {
+                link.classList.remove('active');
+                link.setAttribute('aria-current', 'false');
+            }
+        });
+    }
+
+    // Set initial state
+    setActiveState();
+
+    // Handle clicks
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            localStorage.setItem('lastClicked', this.getAttribute('href'));
+        });
+    });
+
+    // Check localStorage on page load
+    const lastClicked = localStorage.getItem('lastClicked');
+    if (lastClicked) {
+        const savedLink = document.querySelector(`.nav-link[href="${lastClicked}"]`);
+        if (savedLink) {
+            navLinks.forEach(l => {
+                l.classList.remove('active');
+                l.setAttribute('aria-current', 'false');
+            });
+            savedLink.classList.add('active');
+            savedLink.setAttribute('aria-current', 'page');
+        }
+    }
 });
