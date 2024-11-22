@@ -3,6 +3,7 @@
 @include('layouts.normal_header')
 
 @section('content')
+<section class="min-vh-100 d-flex align-items-center" style="background: url('assets/img/shanghai2.jpg') center/cover fixed;">
 <div class="container min-vh-75 d-flex align-items-center align-items-md-center pt-5">
     <div class="row justify-content-center w-100">
         <div class="col-lg-4 col-md-6 col-10">
@@ -38,4 +39,5 @@
         </div>
     </div>
 </div>
+</section>
 @endsection

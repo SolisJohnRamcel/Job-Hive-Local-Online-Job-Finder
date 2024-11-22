@@ -40,7 +40,7 @@
                                     <small class="text-danger" id="messageError"></small>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary btn-lg w-100">Send Message</button>
+                                <button type="submit" class="btn text-white btn-lg w-100"style="background-color: #947439;">Send Message</button>
                             </form>
 
                             <div id="successMessage" class="alert alert-success mt-4 d-none">
