@@ -10,6 +10,6 @@ class AdminController extends Controller
 {
     public function admin(): View
     {
-        return view('admin.admin');
+        return view('admin.admin')->with([view('admin.page.dashboard')]);
     }
 }

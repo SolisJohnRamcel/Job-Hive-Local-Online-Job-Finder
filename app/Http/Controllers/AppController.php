@@ -9,6 +9,6 @@ class AppController extends Controller
 {
     public function app(): View
     {
-        return view('layouts.app');
+        return view('layouts.app')->with([view('user.index')]);
     }
 }

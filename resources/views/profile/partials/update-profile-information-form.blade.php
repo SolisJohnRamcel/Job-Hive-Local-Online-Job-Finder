@@ -1,12 +1,9 @@
 <section>
-    <header>
+    <header class="mb-3">
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+            {{ __('Edit my profile') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
-        </p>
     </header>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
@@ -17,6 +14,39 @@
         @csrf
         @method('patch')
 
+        <div class="card border-0 shadow-sm">
+            <div class="position-relative">
+                <!-- Cover Image -->
+                <img src="assets/img/jobthing.jpg" class="card-img-top" alt="Cover_Photo" style="height: 250px; object-fit: cover;">
+                
+                <!-- Edit Button -->
+                <div class="position-absolute top-0 end-0 m-3">
+                    <label for="Cover_Photo">
+                        <span class="btn btn-transparent btn-sm rounded-pill border-0">
+                            <i class="bi bi-pencil-fill text-white fs-7"></i>
+                        </span>
+                    </label>
+                    <input type="file" class="d-none" id="Cover_Photo" name="Cover_Photo" accept="image/*" onchange="previewImage(this)" >
+                </div>
+            </div>
+        </div>
+        <div class="translate-middle-y position-relative" style="top: 10px; left: 15px;">
+            <div class="d-flex align-items-start">
+                <div class="position-relative">
+                    <div class="bg-white rounded-circle p-1">
+                        <img src="{{ URL('assets/img/Job Hive_icon.png') }}" alt="Profile Picture" width="120" height="120" class="rounded-circle border" style="object-fit: cover;">
+                        <label for="profile_image" class="position-absolute bottom-0 end-0 mb-1 me-1">
+                            <span class="btn btn-sm btn-dark rounded-circle">
+                                <i class="bi bi-pencil-fill"></i>
+                            </span>
+                        </label>
+                        <input type="file" class="d-none" id="profile_image" name="profile_image" accept="image/*" onchange="previewImage(this)" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="mb-3">
             <label for="name" class="form-label">{{ __('Name') }}</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $user->name) }}" required autofocus>
@@ -26,8 +56,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="about_me" class="form-label">{{ __('About') }}</label>
-            <input type="text" class="form-control" id="about_me" name="about_me" value="{{ old('about_me', $user->about_me) }}" required>
+            <label for="about_me" class="form-label">{{ __('Address') }}</label>
+            <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $user->address) }}" >
             @error('about')
                 <div class="text-danger small mt-1">{{ $message }}</div>
             @enderror
@@ -35,11 +65,20 @@
 
         <div class="mb-3">
             <label for="email" class="form-label">{{ __('Email') }}</label>
-            <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" required>
+            <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" >
             @error('email')
                 <div class="text-danger small mt-1">{{ $message }}</div>
             @enderror
         </div>
+
+        <div class="mb-3">
+            <label for="bio" class="form-label">{{ __('Short Bio (Optional)') }}</label>
+            <textarea class="form-control" rows="4" id="bio" name="bio" >{{ old('bio', $user->bio) }}</textarea>
+            @error('about')
+                <div class="text-danger small mt-1">{{ $message }}</div>
+            @enderror
+        </div>
+
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
                 <div>
@@ -62,7 +101,7 @@
         </div>
 
         <div class="d-flex align-items-center gap-3">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary ms-3">
                 {{ __('Save') }}
             </button>
 
@@ -70,6 +109,7 @@
                 <div class="text-success small">{{ __('Saved.') }}</div>
             @endif
         </div>
+
     </form>
 </section>
 <br>

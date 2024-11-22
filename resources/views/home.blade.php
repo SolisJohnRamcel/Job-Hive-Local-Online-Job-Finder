@@ -18,12 +18,7 @@
             <div class="col-12 px-4">
                 <x-career_advice />
                 
-                <div class="text-center text-md-start">
-                    <h2>Find your next company</h2>
-                    <p>View company profile to find perfect workplace for you. Learn about Jobs, ratings, company info, benefits and more.</p>
-                </div>
                 
-                <x-try />
             </div>
         </div>
     </div>
