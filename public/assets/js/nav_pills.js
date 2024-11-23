@@ -1,17 +1,24 @@
 document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav.nav-pills.flex-column.mb-auto .nav-link');
-    const dropdownLinks = document.querySelectorAll('.dropdown-menu .dropdown-item');
+    const currentPath = window.location.pathname.replace(/\/$/, ''); // Normalize the current path by removing trailing slash
 
-    // Set initial home active state
-    const homeLink = navLinks[0];
-    if (homeLink) {
-        homeLink.classList.add('active');
-        homeLink.setAttribute('aria-current', 'page');
-    }
+    // Set initial active state based on current URL
+    navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href').replace(/\/$/, ''); // Normalize href paths
+        if (linkPath === currentPath) {
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
+        }
+    });
 
     // Handle nav pill clicks
     navLinks.forEach(link => {
-        link.addEventListener('click', function () {
+        link.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent default navigation if applicable
+
+            // Store active link in localStorage
+            localStorage.setItem('activeNavLink', this.getAttribute('href'));
+
             // Remove active state from all nav links
             navLinks.forEach(l => {
                 l.classList.remove('active');
@@ -21,28 +28,24 @@ document.addEventListener('DOMContentLoaded', function () {
             // Add active state to clicked link
             this.classList.add('active');
             this.setAttribute('aria-current', 'page');
+
+            // Optionally navigate to the new link (if needed)
+            window.location.href = this.getAttribute('href');
         });
     });
 
-    // Handle dropdown item clicks and clear active states
-    dropdownLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            // Remove active state from all nav links
-            navLinks.forEach(l => {
-                l.classList.remove('active');
-                l.removeAttribute('aria-current');
-            });
-
-            // Optional: Add a specific behavior for dropdown items if needed
+    // Check localStorage for active link on page load
+    const storedActiveLink = localStorage.getItem('activeNavLink');
+    if (storedActiveLink) {
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute('href').replace(/\/$/, ''); // Normalize href paths
+            if (linkPath === storedActiveLink.replace(/\/$/, '')) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'page');
+            }
         });
-    });
+    }
 
-    // Ensure dropdown toggle does not affect active state
-    const dropdownToggle = document.querySelectorAll('.dropdown-toggle');
-    dropdownToggle.forEach(toggle => {
-        toggle.addEventListener('click', function (e) {
-            // Prevent toggling from interfering with active state
-            e.stopPropagation();
-        });
-    });
+    // Debugging (Optional): Log the stored active link
+    console.log('Stored active link from localStorage:', storedActiveLink);
 });

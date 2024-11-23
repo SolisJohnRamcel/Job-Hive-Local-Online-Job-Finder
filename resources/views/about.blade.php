@@ -41,7 +41,7 @@
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body text-center p-4">
                         <div class="mb-4">
-                            <i class="bi bi-shield-check display-4 text-primary"></i>
+                            <i class="bi bi-shield-check display-4 "></i>
                         </div>
                         <h4 class="fw-bold mb-3">Transparency</h4>
                         <p class="text-muted">Creating a reliable environment for businesses and candidates alike.</p>
@@ -52,7 +52,7 @@
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body text-center p-4">
                         <div class="mb-4">
-                            <i class="bi bi-rocket-takeoff display-4 text-primary"></i>
+                            <i class="bi bi-rocket-takeoff display-4 "></i>
                         </div>
                         <h4 class="fw-bold mb-3">Empowerment</h4>
                         <p class="text-muted">Helping people take charge of their professional paths.</p>
@@ -63,7 +63,7 @@
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body text-center p-4">
                         <div class="mb-4">
-                            <i class="bi bi-lightbulb display-4 text-primary"></i>
+                            <i class="bi bi-lightbulb display-4 "></i>
                         </div>
                         <h4 class="fw-bold mb-3">Innovation</h4>
                         <p class="text-muted">Constantly evolving to meet the demands of a shifting job market.</p>
@@ -74,7 +74,7 @@
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body text-center p-4">
                         <div class="mb-4">
-                            <i class="bi bi-people display-4 text-primary custom-color" style="custom-color: #947439;"></i>
+                            <i class="bi bi-people display-4 "></i>
                         </div>
                         <h4 class="fw-bold mb-3">Community</h4>
                         <p class="text-muted">Fostering development, education, and meaningful connections.</p>

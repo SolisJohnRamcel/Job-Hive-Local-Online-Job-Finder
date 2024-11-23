@@ -36,14 +36,9 @@
                     
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li><a href="{{ route('dashboard') }}" class="nav-link text-white">Dashboard</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
                         <li><a href="#" class="nav-link text-white">List of users</a></li>
                         <li><a href="#" class="nav-link text-white">Reports</a></li>
+                        <li><a href="#" class="nav-link text-white">Job List</a></li>
                     </ul>
                     
                     <div class="dropdown mt-auto">
@@ -77,14 +72,9 @@
                     <hr class="my-3">
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li><a href="{{ route('dashboard') }}" class="nav-link text-white">Dashboard</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
                         <li><a href="#" class="nav-link text-white">List of users</a></li>
                         <li><a href="#" class="nav-link text-white">Reports</a></li>
+                        <li><a href="#" class="nav-link text-white">Job List</a></li>
                     </ul>
                     <div class="dropdown mt-auto">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">

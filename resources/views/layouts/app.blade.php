@@ -9,6 +9,7 @@
     <link href="{{ asset('assets/css/navpills_gold.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/user_mobile.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/sidebar_stay.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
     <title>Job Hive Job Finder</title>
 </head>
 <body>
@@ -26,13 +27,10 @@
                     
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li><a href="{{ route('index_user') }}" class="nav-link text-white"><i class="bi bi-house-door-fill me-2"></i>Home</a></li>
-                        <li><a href="#" class="nav-link text-white"><i class="bi bi-briefcase-fill me-2"></i>Job Preferences</a></li>
-                        <li><a href="#" class="nav-link text-white"><i class="bi bi-translate me-2"></i>Language/Dialect</a></li>
-                        <li><a href="#" class="nav-link text-white">Educational Background</a></li>
-                        <li><a href="#" class="nav-link text-white"><i class="bi bi-file-earmark-text-fill me-2"></i>Certification Training</a></li>
-                        <li><a href="#" class="nav-link text-white">Work Experience</a></li>
-                        <li><a href="#" class="nav-link text-white">Other Skills</a></li>
-                        <li><a href="#" class="nav-link text-white">Certification/Authorization</a></li>
+                        <li><a href="{{ route('resume') }}" class="nav-link text-white"><i class="bi bi-file-earmark-text-fill me-2"></i>Resume</a></li>
+                        <li><a href="{{route('application')}}" class="nav-link text-white"><i class="bi bi-file-earmark-text me-2"></i>Application</a></li>
+                 
+                       
                     </ul>
                     
                     <div class="dropdown mt-auto">
@@ -56,7 +54,7 @@
             </div>
 
             <!-- Sidebar (mobile version using offcanvas) -->
-            <div class="offcanvas offcanvas-start bg-dark text-white d-lg-none" id="sidebar" tabindex="-1" aria-labelledby="sidebarLabel" style="width: 250px;">
+            <div class="offcanvas offcanvas-start bg-dark text-white d-lg-none" id="sidebar" tabindex="-1" aria-labelledby="sidebarLabel" style="width: 270px;">
                 <div class="offcanvas-body d-flex flex-column p-3">
                     <!-- Same sidebar content as desktop -->
                     <a href="{{ route('index_user') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -66,13 +64,9 @@
                     <hr class="my-3">
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li><a href="{{ route('index_user') }}" class="nav-link text-white"><i class="bi bi-house-door-fill me-2"></i>Home</a></li>
-                        <li><a href="#" class="nav-link text-white"><i class="bi bi-briefcase-fill me-2"></i>Job Preferences</a></li>
-                        <li><a href="#" class="nav-link text-white"><i class="bi bi-translate me-2"></i>Language/Dialect</a></li>
-                        <li><a href="#" class="nav-link text-white">Educational Background</a></li>
-                        <li><a href="#" class="nav-link text-white"><i class="bi bi-file-earmark-text-fill me-2"></i>Certification Training</a></li>
-                        <li><a href="#" class="nav-link text-white">Work Experience</a></li>
-                        <li><a href="#" class="nav-link text-white">Other Skills</a></li>
-                        <li><a href="#" class="nav-link text-white">Certification/Authorization</a></li>
+                        <li><a href="{{ route('resume') }}" class="nav-link text-white"><i class="bi bi-file-earmark-text-fill me-2"></i>Resume</a></li>
+                        <li><a href="{{route('application')}}" class="nav-link text-white"><i class="bi bi-file-earmark-text me-2"></i>Application</a></li>
+        
                     </ul>
                     <div class="dropdown mt-auto">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
@@ -113,7 +107,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets/js/nav_pills.js') }}"></script>
-    <script src="{{ asset('assets/js/edit_profile.js') }}"></script>
     <script src="{{ asset('assets/js/preview_image.js') }}"></script>
 </body>
 </html>

@@ -101,7 +101,7 @@
         </div>
 
         <div class="d-flex align-items-center gap-3">
-            <button type="submit" class="btn btn-primary ms-3">
+            <button type="submit" class="btn btn-dark ms-3">
                 {{ __('Save') }}
             </button>
 

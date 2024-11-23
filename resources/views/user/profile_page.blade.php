@@ -12,7 +12,7 @@
         <div class="card-body position-relative">
         <!-- Edit Button -->
         <div class="d-flex justify-content-end mb-3">
-        <button class="btn btn-dark btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#editProfileModal" style="z-index: 1050;">
+        <button class="btn btn-dark btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#editProfileModal" style="z-index: 1000;">
             <i class="bi bi-pencil-fill me-2"></i>Edit Profile
         </button>
         </div>
@@ -59,7 +59,7 @@
     </div>
 </div>
 <!-- Add Modal -->
-<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">

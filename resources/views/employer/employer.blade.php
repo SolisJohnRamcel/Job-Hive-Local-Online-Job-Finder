@@ -25,15 +25,9 @@
                     <hr class="my-3">
                     
                     <ul class="nav nav-pills flex-column mb-auto">
-                        <li><a href="#" class="nav-link text-white">Dashboard</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
+                        <li><a href="{{route('emp_dashboard')}}" class="nav-link text-white">Dashboard</a></li>
+                        <li><a href="{{route('emp_joblist')}}" class="nav-link text-white">Job List</a></li>
+                        <li><a href="{{route('application_request')}}" class="nav-link text-white">Application Request list</a></li>
                     </ul>
                     
                     <div class="dropdown mt-auto">
@@ -66,15 +60,10 @@
                     </a>
                     <hr class="my-3">
                     <ul class="nav nav-pills flex-column mb-auto">
-                        <li><a href="#" class="nav-link text-white">Dashboard</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
-                        <li><a href="#" class="nav-link text-white">=</a></li>
+                        <li><a href="{{route('emp_dashboard')}}" class="nav-link text-white">Dashboard</a></li>
+                        <li><a href="{{route('emp_joblist')}}" class="nav-link text-white">Job List</a></li>
+                        <li><a href="{{route('application_request')}}" class="nav-link text-white">Application Request list</a></li>
+                 
                     </ul>
                     <div class="dropdown mt-auto">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
