@@ -17,7 +17,7 @@
             <!-- Sidebar (desktop version) -->
             <div class="col-auto px-0 sidebar d-none d-lg-block">
                 <div class="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white bg-dark sidebar-height" style="width: 250px;">
-                    <a href="{{ route('index_user') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <a href="{{ route('emp_dashboard') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <img src="{{ URL('assets/img/Job Hive_icon.png')}}" width="40" height="32" alt="Job Hive Logo" class="me-2">
                         <strong class="fs-4">JobHive</strong>
                     </a>
@@ -25,9 +25,9 @@
                     <hr class="my-3">
                     
                     <ul class="nav nav-pills flex-column mb-auto">
-                        <li><a href="{{route('emp_dashboard')}}" class="nav-link text-white">Dashboard</a></li>
-                        <li><a href="{{route('emp_joblist')}}" class="nav-link text-white">Job List</a></li>
-                        <li><a href="{{route('application_request')}}" class="nav-link text-white">Application Request list</a></li>
+                        <li><a href="{{route('emp_dashboard')}}" class="nav-link text-white"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
+                        <li><a href="{{route('emp_joblist')}}" class="nav-link text-white"><i class="bi bi-briefcase-fill me-2"></i>Job List</a></li>
+                        <li><a href="{{route('application_request')}}" class="nav-link text-white"><i class="bi bi-file-earmark-person me-1"></i>Application Request list</a></li>
                     </ul>
                     
                     <div class="dropdown mt-auto">
@@ -51,18 +51,18 @@
             </div>
 
             <!-- Sidebar (mobile version using offcanvas) -->
-            <div class="offcanvas offcanvas-start bg-dark text-white d-lg-none" id="sidebar" tabindex="-1" aria-labelledby="sidebarLabel" style="width: 250px;">
+            <div class="offcanvas offcanvas-start bg-dark text-white d-lg-none" id="sidebar" tabindex="-1" aria-labelledby="sidebarLabel" style="width: 270px;">
                 <div class="offcanvas-body d-flex flex-column p-3">
                     <!-- Same sidebar content as desktop -->
-                    <a href="{{ route('index_user') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <a href="{{ route('emp_dashboard') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <img src="{{ URL('assets/img/Job Hive_icon.png')}}" width="40" height="32" alt="Job Hive Logo" class="me-2">
                         <strong class="fs-4">JobHive</strong>
                     </a>
                     <hr class="my-3">
                     <ul class="nav nav-pills flex-column mb-auto">
-                        <li><a href="{{route('emp_dashboard')}}" class="nav-link text-white">Dashboard</a></li>
-                        <li><a href="{{route('emp_joblist')}}" class="nav-link text-white">Job List</a></li>
-                        <li><a href="{{route('application_request')}}" class="nav-link text-white">Application Request list</a></li>
+                        <li><a href="{{route('emp_dashboard')}}" class="nav-link text-white"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
+                        <li><a href="{{route('emp_joblist')}}" class="nav-link text-white"><i class="bi bi-briefcase-fill me-2"></i>Job List</a></li>
+                        <li><a href="{{route('application_request')}}" class="nav-link text-white"><i class="bi bi-file-earmark-person me-1"></i>Application Request list</a></li>
                  
                     </ul>
                     <div class="dropdown mt-auto">

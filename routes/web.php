@@ -3,8 +3,14 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
+
+
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\AdminJoblistController;
+use App\Http\Controllers\admin\AdminReportsController;
+use App\Http\Controllers\admin\ListofUsersController;
+
 
 use App\Http\Controllers\employer\EmployerController;
 use App\Http\Controllers\employer\ApplicationRequestController;
@@ -41,6 +47,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
     Route::get('/adminprofile', [AdminProfileController::class, 'edit'])->name('adminprofile.edit');
+    Route::get('/admin_joblist', [AdminJoblistController::class, 'admin_joblist'])->name('admin_joblist');
+    Route::get('/admin_reports', [AdminReportsController::class, 'admin_reports'])->name('admin_reports');
+    Route::get('/list_of_users', [ListofUsersController::class, 'list_of_users'])->name('list_of_users');
 });
 
 Route::middleware(['auth', 'employer'])->group(function () {

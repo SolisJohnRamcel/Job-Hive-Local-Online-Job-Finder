@@ -27,7 +27,7 @@
             <!-- Sidebar (desktop version) -->
             <div class="col-auto px-0 sidebar d-none d-lg-block">
                 <div class="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white bg-dark sidebar-height" style="width: 250px;">
-                    <a href="{{ route('index_user') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <a href="{{ route('dashboard') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <img src="{{ URL('assets/img/Job Hive_icon.png')}}" width="40" height="32" alt="Job Hive Logo" class="me-2">
                         <strong class="fs-4">JobHive</strong>
                     </a>
@@ -35,10 +35,10 @@
                     <hr class="my-3">
                     
                     <ul class="nav nav-pills flex-column mb-auto">
-                        <li><a href="{{ route('dashboard') }}" class="nav-link text-white">Dashboard</a></li>
-                        <li><a href="#" class="nav-link text-white">List of users</a></li>
-                        <li><a href="#" class="nav-link text-white">Reports</a></li>
-                        <li><a href="#" class="nav-link text-white">Job List</a></li>
+                        <li><a href="{{ route('dashboard') }}" class="nav-link text-white"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
+                        <li><a href="{{route('list_of_users')}}" class="nav-link text-white"><i class="bi bi-person-lines-fill me-2"></i>List of users</a></li>
+                        <li><a href="{{route('admin_reports')}}" class="nav-link text-white"><i class="bi bi-file-earmark-text me-2"></i>Reports</a></li>
+                        <li><a href="{{route('admin_joblist')}}" class="nav-link text-white"><i class="bi bi-briefcase-fill me-2"></i>Job List</a></li>
                     </ul>
                     
                     <div class="dropdown mt-auto">
@@ -62,19 +62,19 @@
             </div>
 
             <!-- Sidebar (mobile version using offcanvas) -->
-            <div class="offcanvas offcanvas-start bg-dark text-white d-lg-none" id="sidebar" tabindex="-1" aria-labelledby="sidebarLabel" style="width: 250px;">
+            <div class="offcanvas offcanvas-start bg-dark text-white d-lg-none" id="sidebar" tabindex="-1" aria-labelledby="sidebarLabel" style="width: 270px;">
                 <div class="offcanvas-body d-flex flex-column p-3">
                     <!-- Same sidebar content as desktop -->
-                    <a href="{{ route('index_user') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <a href="{{ route('dashboard') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <img src="{{ URL('assets/img/Job Hive_icon.png')}}" width="40" height="32" alt="Job Hive Logo" class="me-2">
                         <strong class="fs-4">JobHive</strong>
                     </a>
                     <hr class="my-3">
                     <ul class="nav nav-pills flex-column mb-auto">
-                        <li><a href="{{ route('dashboard') }}" class="nav-link text-white">Dashboard</a></li>
-                        <li><a href="#" class="nav-link text-white">List of users</a></li>
-                        <li><a href="#" class="nav-link text-white">Reports</a></li>
-                        <li><a href="#" class="nav-link text-white">Job List</a></li>
+                        <li><a href="{{ route('dashboard') }}" class="nav-link text-white"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
+                        <li><a href="{{route('list_of_users')}}" class="nav-link text-white"><i class="bi bi-person-lines-fill me-2"></i>List of users</a></li>
+                        <li><a href="{{route('admin_reports')}}" class="nav-link text-white"><i class="bi bi-file-earmark-text me-2"></i>Reports</a></li>
+                        <li><a href="{{route('admin_joblist')}}" class="nav-link text-white"><i class="bi bi-briefcase-fill me-2"></i>Job List</a></li>
                     </ul>
                     <div class="dropdown mt-auto">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
