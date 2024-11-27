@@ -27,6 +27,11 @@ use App\Http\Controllers\user\ResumeController;
 use App\Http\Controllers\user\SavedResumeController;
 use App\Http\Controllers\user\ApplicationController;
 
+
+use App\Http\Controllers\user\JobListController;
+
+Route::resource('joblist', JobListController::class);
+
 #guess viewers
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {
@@ -40,6 +45,9 @@ Route::middleware('guest')->group(function () {
     });
     Route::get('/career_advice', function () {
         return view('career_advice');
+    });
+    Route::get('/joblist', function () {
+        return view('joblist');
     });
 });
 

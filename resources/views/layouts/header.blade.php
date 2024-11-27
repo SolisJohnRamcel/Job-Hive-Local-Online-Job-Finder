@@ -16,9 +16,9 @@
             <!-- Search Form -->
             <form class="d-flex mx-lg-3 my-2 my-lg-0 flex-grow-1" style="max-width: 500px;" role="search">
                 <input class="form-control me-2" type="search" placeholder="Find Jobs" aria-label="Search">
-                <button class="btn" style="background-color: #f7c15d;" type="submit">
-                    <img src="{{ URL('assets/img/search_icon.png') }}" width="16" height="16" alt="Search Icon">
-                </button>
+                <a href="/joblist" class="btn" style="background-color: #f7c15d;" type="submit">
+                    <img src="{{ URL('assets/img/search_icon.png') }}" class="mt-1" width="16" height="16" alt="Search Icon">
+                </a>
             </form>
 
             <!-- Navigation Links -->

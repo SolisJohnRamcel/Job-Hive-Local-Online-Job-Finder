@@ -10,6 +10,6 @@ class EmployerController extends Controller
 {
     public function employer(): View
     {
-        return view('employer.employer');
+        return view('employer.employer')->with([view('employer.page.emp_dashboard')]);
     }
 }

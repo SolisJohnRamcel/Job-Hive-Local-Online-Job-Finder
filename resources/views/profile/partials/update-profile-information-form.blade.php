@@ -10,23 +10,23 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
         <div class="card border-0 shadow-sm">
             <div class="position-relative">
                 <!-- Cover Image -->
-                <img src="assets/img/jobthing.jpg" class="card-img-top" alt="Cover_Photo" style="height: 250px; object-fit: cover;">
+                <img src="{{ $user->cover_photo ? asset('storage/' . $user->cover_photo) : asset('assets/img/jobthing.jpg') }}" class="card-img-top" alt="Cover_Photo" style="height: 250px; object-fit: cover;">
                 
                 <!-- Edit Button -->
                 <div class="position-absolute top-0 end-0 m-3">
-                    <label for="Cover_Photo">
-                        <span class="btn btn-transparent btn-sm rounded-pill border-0">
-                            <i class="bi bi-pencil-fill text-white fs-7"></i>
+                    <label for="cover_photo">
+                        <span class="btn btn-dark btn-sm rounded-circle">
+                        <i class="bi bi-camera"></i>
                         </span>
                     </label>
-                    <input type="file" class="d-none" id="Cover_Photo" name="Cover_Photo" accept="image/*" onchange="previewImage(this)" >
+                    <input type="file" class="d-none" id="cover_photo" name="cover_photo" accept="image/*" onchange="previewImage(this)" >
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
             <div class="d-flex align-items-start">
                 <div class="position-relative">
                     <div class="bg-white rounded-circle p-1">
-                        <img src="{{ URL('assets/img/Job Hive_icon.png') }}" alt="Profile Picture" width="120" height="120" class="rounded-circle border" style="object-fit: cover;">
+                        <img src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) : asset('assets/img/Job Hive_icon.png') }}" alt="Profile Picture" width="120" height="120" class="rounded-circle border" style="object-fit: cover;">
                         <label for="profile_image" class="position-absolute bottom-0 end-0 mb-1 me-1">
                             <span class="btn btn-sm btn-dark rounded-circle">
                                 <i class="bi bi-pencil-fill"></i>
@@ -56,14 +56,6 @@
         </div>
 
         <div class="mb-3">
-            <label for="about_me" class="form-label">{{ __('Address') }}</label>
-            <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $user->address) }}" >
-            @error('about')
-                <div class="text-danger small mt-1">{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div class="mb-3">
             <label for="email" class="form-label">{{ __('Email') }}</label>
             <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" >
             @error('email')
@@ -72,9 +64,17 @@
         </div>
 
         <div class="mb-3">
-            <label for="bio" class="form-label">{{ __('Short Bio (Optional)') }}</label>
+            <label for="jobrole" class="form-label">{{ __('Job Position') }}</label>
+            <input type="text" class="form-control" id="jobrole" name="jobrole" value="{{ old('jobrole', $user->jobrole) }}" >
+            @error('jobrole')
+                <div class="text-danger small mt-1">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="bio" class="form-label">{{ __('Description') }}</label>
             <textarea class="form-control" rows="4" id="bio" name="bio" >{{ old('bio', $user->bio) }}</textarea>
-            @error('about')
+            @error('bio')
                 <div class="text-danger small mt-1">{{ $message }}</div>
             @enderror
         </div>

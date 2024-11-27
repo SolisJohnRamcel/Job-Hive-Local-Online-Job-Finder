@@ -25,6 +25,10 @@ class ProfileUpdateRequest extends FormRequest
                 'max:255',
                 Rule::unique(User::class)->ignore($this->user()->id),
             ],
+            'bio' => ['nullable', 'string', 'max:160'], // Add this line
+            'profile_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'], // Validation for profile image
+            'cover_photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'jobrole' => ['nullable', 'string', 'max:100'],
         ];
     }
 }
