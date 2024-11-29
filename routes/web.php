@@ -28,9 +28,9 @@ use App\Http\Controllers\user\SavedResumeController;
 use App\Http\Controllers\user\ApplicationController;
 
 
-use App\Http\Controllers\user\JobListController;
 
-Route::resource('joblist', JobListController::class);
+
+
 
 #guess viewers
 Route::middleware('guest')->group(function () {
@@ -53,7 +53,6 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
     Route::get('/adminprofile', [AdminProfileController::class, 'edit'])->name('adminprofile.edit');
     Route::get('/admin_joblist', [AdminJoblistController::class, 'admin_joblist'])->name('admin_joblist');
     Route::get('/admin_reports', [AdminReportsController::class, 'admin_reports'])->name('admin_reports');
@@ -62,16 +61,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::middleware(['auth', 'employer'])->group(function () {
     Route::get('/employerprofile', [EmployerProfileController::class, 'edit'])->name('employerprofile.edit');
-    Route::get('/employer', [EmployerController::class, 'employer'])->name('employer');
     Route::get('/application_request', [ApplicationRequestController::class, 'application_request'])->name('application_request');
     Route::get('/emp_dashboard', [EmpDashboardController::class, 'emp_dashboard'])->name('emp_dashboard');
     Route::get('/emp_joblist', [EmpJoblistController::class, 'emp_joblist'])->name('emp_joblist');
-});
 
+    Route::patch('/joblist/{joblist}',[EmpJoblistController::class, 'update'])->name('joblist.update');
+    Route::post('/joblist',[EmpJoblistController::class, 'store'])->name('joblist.store');
+    Route::delete('/joblist/{joblist}',[EmpJoblistController::class, 'destroy'])->name('joblist.destroy');
+});
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/saved_resume', [SavedResumeController::class, 'saved_resume'])->name('saved_resume');
     Route::get('/resume', [ResumeController::class, 'resume'])->name('resume');
-    Route::get('/app', [AppController::class, 'app'])->name('app');
     Route::get('/index_user', [HomePageController::class, 'index_user'])->name('index_user');
     Route::get('/profile_page', [ProfilePageController::class, 'profile_page'])->name('profile_page');
     Route::get('/application', [ApplicationController::class, 'application'])->name('application');

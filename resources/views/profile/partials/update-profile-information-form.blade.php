@@ -17,7 +17,7 @@
         <div class="card border-0 shadow-sm">
             <div class="position-relative">
                 <!-- Cover Image -->
-                <img src="{{ $user->cover_photo ? asset('storage/' . $user->cover_photo) : asset('assets/img/jobthing.jpg') }}" class="card-img-top" alt="Cover_Photo" style="height: 250px; object-fit: cover;">
+                <img src="{{ $user->cover_photo ? asset('storage/' . $user->cover_photo) : asset('assets/img/default-image.jpg') }}" class="card-img-top" alt="Cover_Photo" style="height: 250px; object-fit: cover;">
                 
                 <!-- Edit Button -->
                 <div class="position-absolute top-0 end-0 m-3">

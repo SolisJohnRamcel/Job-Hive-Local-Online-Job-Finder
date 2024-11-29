@@ -106,6 +106,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets/js/nav_pills.js') }}"></script>
     <script src="{{ asset('assets/js/edit_profile.js') }}"></script>
-    <script src="{{ asset('assets/js/preview_image.js') }}"></script>
+
+
 </body>
 </html>

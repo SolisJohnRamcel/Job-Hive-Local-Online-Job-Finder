@@ -33,11 +33,11 @@ class SigninController extends Controller
             
             // Check user type and redirect accordingly
             if ($user->usertype === 'admin') {
-                return redirect()->route('admin')->with('success', 'Welcome back admin!');
+                return redirect()->route('dashboard')->with('success', 'Welcome back admin!');
             } elseif ($user->usertype === 'employer') {
-                return redirect()->route('employer')->with('success', 'Welcome back employer!');
+                return redirect()->route('emp_dashboard')->with('success', 'Welcome back employer!');
             } else {
-                return redirect()->route('app')->with('success', 'Welcome back!');
+                return redirect()->route('index_user')->with('success', 'Welcome back!');
             }
         }
 
