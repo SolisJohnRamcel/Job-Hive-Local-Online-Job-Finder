@@ -9,26 +9,19 @@
                 <h1 class="mb-0 fw-bold" style="color: #d7a343;font-family: Poppins;">Find Your Next Job</h1>
             </div>
            
-            <form class="container-fluid p-3">
+            <form action="{{ route('jobs.search') }}" method="GET" class="container-fluid p-3" >
+            @csrf
             <!-- Main Search Group -->
             <div class="row mb-3">
                 <div class="col-12">
                     <div class="row g-2">
                         <!-- Search Input -->
                         <div class="col-12 col-md">
-                            <input type="text" class="form-control" placeholder="Search for jobs">
-                        </div>
-                        <!-- Classification Dropdown -->
-                        <div class="col-12 col-md">
-                            <select class="form-select" id="classification" name="classification">
-                                <option value="" selected disabled>Any Classification</option>
-                                <option value="Accounting">Accounting</option>
-                                <option value="Engineering">Engineering</option>
-                            </select>
+                            <input type="text" name="search" class="form-control" placeholder="Search for jobs">
                         </div>
                         <!-- Location Input -->
                         <div class="col-12 col-md">
-                            <input type="text" class="form-control" placeholder="Location">
+                            <input type="text" name="location" class="form-control" placeholder="Location">
                         </div>
                         <!-- Search Button -->
                         <div class="col-12 col-md-auto">
@@ -46,14 +39,24 @@
                 <div class="col-12">
                     <div class="d-flex flex-wrap gap-2">
                         <!-- Work Types -->
-                        <select class="form-select" id="worktypes" name="worktypes" style="width: 160px;">
+                        <select name="work_type" class="form-select" id="worktypes" style="width: 160px;">
                             <option value="" selected disabled>All Work Types</option>
                             <option value="Full time">Full time</option>
                             <option value="Part time">Part time</option>
                             <option value="Contract/Temp">Contract/Temp</option>
                             <option value="Casual/Vacation">Casual/Vacation</option>
                         </select>
+                        <!-- Posted Time -->
+                        <select class="form-select" id="joblisttimeposted" name="posted_time" style="width: 190px;">
+                            <option value="" selected disabled>Joblist posted time</option>
+                            <option value="Any time">Any time</option>
+                            <option value="Last 3 days">Last 3 days</option>
+                            <option value="Last 7 days">Last 7 days</option>
+                            <option value="Last 14 days">Last 14 days</option>
+                            <option value="Last 30 days">Last 30 days</option>
+                        </select>
 
+                        
                         <!-- Salary From Dropdown -->
                         <div class="dropdown">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="salaryDropdown" data-bs-toggle="dropdown">
@@ -69,6 +72,9 @@
                                     <input type="radio" class="btn-check" name="salaryType" id="hourly" value="hourly">
                                     <label class="btn btn-outline-dark" for="hourly">Hourly</label>
                                 </div>
+                                
+
+
                                 <select class="form-select salary-range" id="salaryRangeAnnually" name="salaryRangeAnnually" style="display: block;">
                                                     <option value="0" selected>₱0</option>
                                                     <option value="150000">₱150K</option>
@@ -184,18 +190,13 @@
                             </div>
                         </div>
 
-                        <!-- Posted Time -->
-                        <select class="form-select" id="joblisttimeposted" name="joblisttimeposted" style="width: 190px;">
-                            <option value="" selected disabled>Joblist posted time</option>
-                            <option value="Any time">Any time</option>
-                            <option value="Last 3 days">Last 3 days</option>
-                            <option value="Last 7 days">Last 7 days</option>
-                            <option value="Last 14 days">Last 14 days</option>
-                            <option value="Last 30 days">Last 30 days</option>
-                        </select>
-                    </div>
+                   
                 </div>
             </div>
+            <input type="hidden" name="salary_from" id="hiddenSalaryFrom">
+            <input type="hidden" name="salary_to" id="hiddenSalaryTo">
+            <input type="hidden" name="salary_type" id="hiddenSalaryType">
+
         </form>
 
         </div>
@@ -262,6 +263,7 @@
                         <p class="card-text">{{ $job->company_name  }}</p>
                         <div class="mb-3">
                         <p class="card-text mb-0">{{ $job->location }}</p>
+                        <p class="card-text mb-0 text-secondary">{{ $job->work_type }}</p>
                         <p class="card-text mb-0"> ₱{{ number_format($job->salary_min) }} – ₱{{ number_format($job->salary_max) }} per month</p>
                         <p class="card-text mb-3">{{ $job->job_category  }}</p>
                         <p class="card-text mb-3 text-secondary ">{{ $job->created_at->diffForHumans() }}</p>
@@ -500,6 +502,75 @@
     salaryTypeInputsTo.forEach(input => input.addEventListener('change', handleSalaryTypeChange));
 });
 
-    </script>
+
+
+document.addEventListener('DOMContentLoaded', function() {
+   // Add this to ensure hidden fields are properly updated before form submission
+    const form = document.querySelector('form');
+
+});
+// Add this to your existing JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    const salaryRanges = document.querySelectorAll('.salary-range');
+    const salaryRangesTo = {
+        annually: document.querySelector('#salaryRangeToAnnually'),
+        monthly: document.querySelector('#salaryRangeToMonthly'),
+        hourly: document.querySelector('#salaryRangeToHourly')
+    };
+
+    function submitFormWithAjax() {
+        const form = document.querySelector('form');
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            credentials: 'same-origin',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.container.my-5').innerHTML = html;
+        });
+    }
+
+    // Add change listeners to salary range dropdowns
+    salaryRanges.forEach(range => {
+        range.addEventListener('change', function() {
+            updateHiddenFields();
+            submitFormWithAjax();
+        });
+    });
+
+    Object.values(salaryRangesTo).forEach(range => {
+        if (range) {
+            range.addEventListener('change', function() {
+                updateHiddenFields();
+                submitFormWithAjax();
+            });
+        }
+    });
+
+    function updateHiddenFields() {
+        const activeSalaryRange = document.querySelector('.salary-range[style*="display: block"]');
+        const activeSalaryRangeTo = Object.values(salaryRangesTo).find(range => range.style.display === 'block');
+        
+        document.getElementById('hiddenSalaryFrom').value = activeSalaryRange?.value || '';
+        document.getElementById('hiddenSalaryTo').value = activeSalaryRangeTo?.value || '';
+        document.getElementById('hiddenSalaryType').value = document.querySelector('input[name="salaryType"]:checked')?.value || '';
+    }
+});
+
+
+
+
+
+
+
+
+</script>
+
     
 @endsection

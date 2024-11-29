@@ -2,17 +2,17 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AppController;
 
 
-use App\Http\Controllers\admin\AdminController;
+
+
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\AdminJoblistController;
 use App\Http\Controllers\admin\AdminReportsController;
 use App\Http\Controllers\admin\ListofUsersController;
 
 
-use App\Http\Controllers\employer\EmployerController;
+
 use App\Http\Controllers\employer\ApplicationRequestController;
 use App\Http\Controllers\employer\EmpDashboardController;
 use App\Http\Controllers\employer\EmpJoblistController;
@@ -27,10 +27,12 @@ use App\Http\Controllers\user\ResumeController;
 use App\Http\Controllers\user\SavedResumeController;
 use App\Http\Controllers\user\ApplicationController;
 
+use App\Http\Controllers\ContactController;
 
 
-
-
+Route::patch('/contact/{contacts}',[ContactController::class, 'update'])->name('contact.update');
+Route::post('/contact',[ContactController::class, 'store'])->name('contact.store');
+Route::delete('/contact/{contacts}',[ContactController::class, 'destroy'])->name('contact.destroy');
 
 #guess viewers
 Route::middleware('guest')->group(function () {
@@ -73,6 +75,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/saved_resume', [SavedResumeController::class, 'saved_resume'])->name('saved_resume');
     Route::get('/resume', [ResumeController::class, 'resume'])->name('resume');
     Route::get('/index_user', [HomePageController::class, 'index_user'])->name('index_user');
+    Route::get('/search', [HomePageController::class, 'search'])->name('jobs.search');
     Route::get('/profile_page', [ProfilePageController::class, 'profile_page'])->name('profile_page');
     Route::get('/application', [ApplicationController::class, 'application'])->name('application');
 });
