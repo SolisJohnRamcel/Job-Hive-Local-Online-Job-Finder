@@ -269,7 +269,7 @@
                         <p class="card-text mb-3 text-secondary ">{{ $job->created_at->diffForHumans() }}</p>
                         
                         <div class="d-flex gap-2 mb-4">
-                        <button type="button" class="btn btn-dark">Apply Now</button>
+                        <a href="{{route('apply')}}" type="button" class="btn btn-dark">Apply Now</a>
                         
                         </div>
 

@@ -88,4 +88,20 @@ class EmpJoblistController extends Controller
         $joblist->delete();
         return back()->with('success', 'Job deleted successfully!');
     }
+
+    public function index(Request $request)
+    {
+        $sortOrder = $request->input('sortedby') === 'date_oldest' ? 'asc' : 'desc';
+
+        // Fetch sorted job list
+        $joblist = Joblist::orderBy('created_at', $sortOrder)->get();
+
+        return view('employer.page.emp_joblist', compact('joblist'));
+    }
+
+
+
+
+
+
 }

@@ -11,15 +11,21 @@
 
         <!-- Controls -->
         <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 mb-3">
-                <select class="form-select" id="sortedbyrelevance" name="sortedbyrelevance" aria-label="Sorted By Relevance" style="max-width: 200px;">
-                <option value="" selected disabled>Sorted by relevance</option>
-                <option value="Relevance">Relevance</option>
-                <option value="Date">Date</option>
+        <form method="GET" action="{{ route('joblist.index') }}">
+        
+                <select class="form-select" id="sortedby" name="sortedby" aria-label="Sorted By Date" style="max-width: 200px;">
+                <option value="" selected disabled>Sort by</option>
+                <option value="date_newest" {{ request('sortedby') == 'date_newest' ? 'selected' : '' }}>Newest First</option>
+                <option value="date_oldest" {{ request('sortedby') == 'date_oldest' ? 'selected' : '' }}>Oldest First</option>
                 </select>
+        
+        </form>
                 <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAddJobs">
                 <i class="bi bi-file-earmark-plus me-2"></i>Add new jobs
                 </button>
         </div>
+        
+
 
         <!-- Table -->
         <div class="table-responsive">
@@ -450,7 +456,17 @@
     });
 });
 
+
+document.getElementById('sortedby').addEventListener('change', function() {
+        this.form.submit();
+    });
+
+
 </script>
+
+
+
+
 
 
 @endsection

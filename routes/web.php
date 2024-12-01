@@ -26,6 +26,7 @@ use App\Http\Controllers\user\ProfilePageController;
 use App\Http\Controllers\user\ResumeController;
 use App\Http\Controllers\user\SavedResumeController;
 use App\Http\Controllers\user\ApplicationController;
+use App\Http\Controllers\user\ApplyController;
 
 use App\Http\Controllers\ContactController;
 
@@ -70,6 +71,9 @@ Route::middleware(['auth', 'employer'])->group(function () {
     Route::patch('/joblist/{joblist}',[EmpJoblistController::class, 'update'])->name('joblist.update');
     Route::post('/joblist',[EmpJoblistController::class, 'store'])->name('joblist.store');
     Route::delete('/joblist/{joblist}',[EmpJoblistController::class, 'destroy'])->name('joblist.destroy');
+
+    Route::get('/joblist', [EmpJoblistController::class, 'index'])->name('joblist.index');
+
 });
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/saved_resume', [SavedResumeController::class, 'saved_resume'])->name('saved_resume');
@@ -78,6 +82,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/search', [HomePageController::class, 'search'])->name('jobs.search');
     Route::get('/profile_page', [ProfilePageController::class, 'profile_page'])->name('profile_page');
     Route::get('/application', [ApplicationController::class, 'application'])->name('application');
+    Route::get('/apply', [ApplyController::class, 'apply'])->name('apply');
 });
 
 Route::middleware('auth')->group(function () {

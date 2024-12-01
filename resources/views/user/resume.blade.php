@@ -16,7 +16,7 @@
 
     <!-- Resume Picture Section -->
     <div class="row p-4 justify-content-center">
-        @foreach([2, 3, 4] as $index)
+        @foreach([2] as $index)
         <div class="col-sm-6 col-md-3 text-center mb-4">
             <button id="resume{{ $index }}" data-bs-toggle="modal" data-bs-target="#myModal" class="border-0 bg-transparent p-0">
                 <img src="assets/img/resumeversion{{ $index }}.png" class="img-fluid rounded shadow-sm hover-scale" alt="Resume Image {{ $index }}">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#customizemodal" class="btn btn-dark">Customize</button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#customizemodal" class="btn btn-dark">Create</button>
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header text-dark" style="background-color: #d7a343;">
-                    <h5 class="modal-title" id="reportModalLabel">Customize Resume</h5>
+                    <h5 class="modal-title" id="reportModalLabel">Create Resume</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -173,8 +173,6 @@
 <script>
     const imageMapping = {     
         'resume2': 'assets/img/resumeversion2.png',
-        'resume3': 'assets/img/resumeversion3.png',
-        'resume4': 'assets/img/resumeversion4.png'
     };
 
     const myModal = document.getElementById('myModal');
