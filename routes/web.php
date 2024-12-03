@@ -16,6 +16,7 @@ use App\Http\Controllers\admin\ListofUsersController;
 use App\Http\Controllers\employer\ApplicationRequestController;
 use App\Http\Controllers\employer\EmpDashboardController;
 use App\Http\Controllers\employer\EmpJoblistController;
+use App\Http\Controllers\employer\CompanyProfileController;
 
 
 
@@ -74,6 +75,8 @@ Route::middleware(['auth', 'employer'])->group(function () {
 
     Route::get('/joblist', [EmpJoblistController::class, 'index'])->name('joblist.index');
 
+    Route::get('/company_profile', [CompanyProfileController::class, 'company_profile'])->name('company_profile');
+
 });
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/saved_resume', [SavedResumeController::class, 'saved_resume'])->name('saved_resume');
@@ -82,7 +85,9 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/search', [HomePageController::class, 'search'])->name('jobs.search');
     Route::get('/profile_page', [ProfilePageController::class, 'profile_page'])->name('profile_page');
     Route::get('/application', [ApplicationController::class, 'application'])->name('application');
-    Route::get('/apply', [ApplyController::class, 'apply'])->name('apply');
+    Route::get('/apply/{job_id}', [ApplyController::class, 'apply'])->name('apply');
+    Route::post('/apply', [ApplyController::class, 'store'])->name('apply.store');
+
 });
 
 Route::middleware('auth')->group(function () {

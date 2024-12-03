@@ -80,7 +80,7 @@
                                 </div>
                         <div class="modal-body">
                         <div class="container-fluid">
-                                <form method="POST" action="{{ route('joblist.store') }}"enctype="multipart/form-data">
+                                <form id="jobcreateForm" method="POST" action="{{ route('joblist.store') }}"enctype="multipart/form-data">
                                 @csrf
                                 <!-- cover image -->
                                 <div class="position-relative mb-3">
@@ -434,6 +434,17 @@
     </script>
 @endif
 <script>
+
+
+  document.getElementById('jobcreateForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent form submission
+      // Show alert message
+      alert('Job Created Successfully!');
+      // Optionally, submit the form after showing the message
+      this.submit();
+  });
+
+
         document.addEventListener('DOMContentLoaded', function() {
     // Event delegation for dynamically handling file input changes
     document.body.addEventListener('change', function(e) {

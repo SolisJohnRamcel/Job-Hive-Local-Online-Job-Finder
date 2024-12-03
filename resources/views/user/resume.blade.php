@@ -6,7 +6,7 @@
     <!-- Header Section -->
     <div class="row bg-light shadow-sm py-3">
         <div class="col d-flex justify-content-center align-items-center position-relative">
-            <h2 class="display-5 fw-bold mb-0" style="color: #d7a343; font-family: Poppins;">Customize your dream resume</h2>
+            <h2 class="display-5 fw-bold mb-0" style="color: #d7a343; font-family: Poppins;">Create your resume</h2>
             <div class="position-absolute end-0 me-3">
                 <i class="bi bi-three-dots-vertical display-6" data-bs-toggle="modal" data-bs-target="#dotsModal"></i>
             </div>
@@ -99,7 +99,7 @@
                     <h5 class="modal-title" id="reportModalLabel">Create Resume</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="background-color: #F5F5F5;">
                     <form>
                         <!-- profile image -->
                         <div class="mb-2">
@@ -118,7 +118,9 @@
                             <label for="formAboutme" class="form-label">About me</label>
                             <textarea id="formAboutme" class="form-control" rows="4" placeholder="Briefly explain about yourself"></textarea>
                         </div>
-                        <h5 class=" mb-0" style="color: #d7a343;"><i class="bi bi-envelope me-2"></i>CONTACTS</h6>
+
+                        <!-- contact section -->
+                        <h5 class=" mb-0" ><i class="bi bi-envelope me-2"></i>CONTACTS</h6>
                         <!-- contact infos -->
                         <div class="mb-2">
                             <label for="formContactDetails" class="form-label">Contact</label>
@@ -128,33 +130,37 @@
                             <label for="formEmail" class="form-label">Email</label>
                             <input type="Email" id="formEmail" name="email" class="form-control" placeholder="Email">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label for="formAddress" class="form-label">Address</label>
                             <input type="Address" id="formAddress" name="address" class="form-control" placeholder="Street Address">
                         </div>
-                        <h5 class=" mb-0" style="color: #d7a343;"><i class="bi bi-briefcase me-2"></i>EXPERIENCE</h5>
-                        <h5 class=" mb-0" style="color: #d7a343;"><i class="bi bi-mortarboard me-2"></i>EDUCATION</h5>
-                        <h5 class=" mb-0" style="color: #d7a343;"><i class="bi bi-puzzle me-2"></i>SKILLS</h5>
 
-                        <div class="mb-2">
-                            <label for="input_5" class="form-label">Skills</label>
-                            <select 
-                                class="form-select" 
-                                id="input_5" 
-                                name="q5_skillLevel" 
-                                style="width: 200px;" 
-                                required 
-                                aria-label="Skill Level">
-                                <option value="" selected disabled>Please Select</option>
-                                <option value="College Graduate">College Graduate</option>
-                                <option value="Career Changer">Career Changer</option>
-                                <option value="Inexperienced">Inexperienced</option>
-                                <option value="Experienced">Experienced</option>
-                            </select>
-                        </div>
+                        <!-- experience section -->
+                        <h5 class="mb-2"><i class="bi bi-briefcase me-2 "></i>EMPLOYMENT HISTORY</h5>
+                        <div id="employment-section"></div>
+                        <button id="add-employment" type="button" class="btn fw-bold text-success mb-5">
+                            <i class="bi bi-plus me-2 "></i>Add employment
+                        </button>
+
+                        <!-- education section -->
+                        <h5 class="mb-2" ><i class="bi bi-mortarboard me-2 "></i>EDUCATION</h5>
+                        <div id="education-section"></div>
+                        <button id="add-education" type="button" class="btn fw-bold text-success mb-5">
+                            <i class="bi bi-plus me-2 "></i>Add education
+                        </button>
+
+
+
+                        <!-- skills section -->
+                        <h5 class="mb-2"><i class="bi bi-puzzle me-2 "></i>SKILLS</h5>
+                        <div id="skill-section"></div>
+                        <button id="add-skills" type="button" class="btn fw-bold text-success mb-5">
+                            <i class="bi bi-plus me-2 "></i>Add skills
+                        </button>
+                 
                     </form>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" style="background-color: #F5F5F5;">
                     <button type="button" class="btn btn-secondary">Save</button>
                     <button type="button" class="btn btn-dark">Print</button>
                 </div>
@@ -165,6 +171,112 @@
 </div>
 
 
+
+
+
+<!-- ADD WORK EXPERIENCE FORM -->
+<div id="employment-template" class="d-none" style="background-color:white;">
+    <div class="employment-entry border p-3 mb-3 rounded-3">
+        <div class="mb-2">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <label class="form-label fw-bold">(Not specified)</label>
+                <button type="button" class="btn btn-sm toggle-details" data-expanded="true">
+                <i class="bi bi-chevron-up"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Details Section -->
+        <div class="details-section">
+            <div class="mb-2">
+                <label class="form-label">Job Title</label>
+                <input type="text" class="form-control job-title" placeholder="Job Title">
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Company</label>
+                <input type="text" class="form-control" placeholder="Company">
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Start & End Date</label>
+                <div class="d-flex gap-2">
+                    <input type="month" class="form-control" placeholder="MM/YYYY">
+                    <input type="month" class="form-control" placeholder="MM/YYYY">
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" rows="3" placeholder="Describe your role..."></textarea>
+            </div>
+        </div>
+        <button type="button" class="btn remove-entry text-danger"><i class="bi bi-trash-fill me-2"></i>Remove</button>
+    </div>
+</div>
+
+<!-- ADD SCHOOL FORM -->
+<div id="education-template" class="d-none" style="background-color:white;">
+    <div class="education-entry border p-3 mb-3">
+        <div class="mb-2">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <label class="form-label fw-bold">(Not specified)</label>
+                <button type="button" class="btn btn-sm toggle-education-details" data-expanded="true">
+                <i class="bi bi-chevron-up"></i>
+                </button>
+            </div>
+        </div>
+    
+
+        <!-- Details Section -->
+        <div class="education-details-section">
+            <div class="mb-2">
+                <label class="form-label">School</label>
+                <input type="text" class="form-control school-name" placeholder="School">
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Degree</label>
+                <input type="text" class="form-control" placeholder="Degree">
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Start & End Date</label>
+                <div class="d-flex gap-2">
+                    <input type="month" class="form-control" placeholder="MM/YYYY">
+                    <input type="month" class="form-control" placeholder="MM/YYYY">
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">City</label>
+                <input type="text" class="form-control" placeholder="City">
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" rows="3" placeholder="Brief description"></textarea>
+            </div>
+        </div>
+        <button type="button" class="btn remove-entry text-danger"><i class="bi bi-trash-fill me-2"></i>Remove</button>
+    </div>
+</div>
+
+<!-- ADD SKILLS FORM -->
+<div id="skills-template" class="d-none" style="background-color:white;">
+    <div class="skills-entry border p-3 mb-3">
+        <div class="mb-2">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <label class="form-label fw-bold">(Not specified)</label>
+                <button type="button" class="btn btn-sm toggle-skills-details" data-expanded="true">
+                <i class="bi bi-chevron-up"></i>
+                </button>
+            </div>
+        </div>
+    
+
+        <!-- Details Section -->
+        <div class="skill-details-section">
+            <div class="mb-2">
+                <label class="form-label">Skill</label>
+                <input type="text" class="form-control skill-name" placeholder="Skill">
+            </div>
+        </div>
+        <button type="button" class="btn remove-entry text-danger"><i class="bi bi-trash-fill me-2"></i>Remove</button>
+</div>
 
 
 
@@ -200,6 +312,153 @@
         document.getElementById('file-input-container').classList.add('d-none');
         document.getElementById('modal-action-btn').textContent = "Customize";
     });
+
+
+
+
+
+
+
+    
+
+    // add work exp,education
+
+    // Add Employment Form
+    document.getElementById("add-employment").addEventListener("click", function () {
+        const template = document.getElementById("employment-template").cloneNode(true);
+        template.id = ""; // Remove the ID
+        template.classList.remove("d-none");
+        document.getElementById("employment-section").appendChild(template);
+    });
+
+    // Toggle Details Visibility
+    document.addEventListener("click", function (e) {
+        if (e.target.closest(".toggle-details")) {
+            const button = e.target.closest(".toggle-details");
+            const detailsSection = button.closest(".employment-entry").querySelector(".details-section");
+            const isExpanded = button.getAttribute("data-expanded") === "true";
+
+            if (isExpanded) {
+                // Collapse details
+                detailsSection.style.display = "none";
+                button.innerHTML = '<i class="bi bi-chevron-down"></i>';
+                button.setAttribute("data-expanded", "false");
+            } else {
+                // Expand details
+                detailsSection.style.display = "block";
+                button.innerHTML = '<i class="bi bi-chevron-up"></i>';
+                button.setAttribute("data-expanded", "true");
+            }
+        }
+    });
+    // Update Employment Title dynamically
+    document.addEventListener("input", function (e) {
+        if (e.target.classList.contains("job-title")) {
+            const jobTitleInput = e.target.value.trim();
+            const label = e.target.closest(".employment-entry").querySelector(".form-label.fw-bold");
+            label.textContent = jobTitleInput || "(Not specified)";
+        }
+    });
+
+    // Remove Entry
+    document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("remove-entry")) {
+            e.target.closest(".employment-entry").remove();
+        }
+    });
+
+
+
+    // Add Education Form
+    document.getElementById("add-education").addEventListener("click", function () {
+        const template = document.getElementById("education-template").cloneNode(true);
+        template.id = ""; // Remove the ID
+        template.classList.remove("d-none");
+        document.getElementById("education-section").appendChild(template);
+    });
+
+    // Toggle Education Details Visibility
+    document.addEventListener("click", function (e) {
+        if (e.target.closest(".toggle-education-details")) {
+            const button = e.target.closest(".toggle-education-details");
+            const detailsSection = button.closest(".education-entry").querySelector(".education-details-section");
+            const isExpanded = button.getAttribute("data-expanded") === "true";
+
+            if (isExpanded) {
+                // Collapse details
+                detailsSection.style.display = "none";
+                button.innerHTML = '<i class="bi bi-chevron-down"></i>';
+                button.setAttribute("data-expanded", "false");
+            } else {
+                // Expand details
+                detailsSection.style.display = "block";
+                button.innerHTML = '<i class="bi bi-chevron-up"></i>';
+                button.setAttribute("data-expanded", "true");
+            }
+        }
+    });
+    // Update Education School Name dynamically
+    document.addEventListener("input", function (e) {
+        if (e.target.classList.contains("school-name")) {
+            const schoolNameInput = e.target.value.trim();
+            const label = e.target.closest(".education-entry").querySelector(".form-label.fw-bold");
+            label.textContent = schoolNameInput || "(Not specified)";
+        }
+    });
+    // Remove Entry
+    document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("remove-entry")) {
+            e.target.closest(".employment-entry, .education-entry").remove();
+        }
+    });
+
+
+
+
+    // Add Skills Form
+    document.getElementById("add-skills").addEventListener("click", function () {
+        const template = document.getElementById("skills-template").cloneNode(true);
+        template.id = ""; // Remove the ID
+        template.classList.remove("d-none");
+        document.getElementById("skill-section").appendChild(template);
+    });
+
+    // Toggle Skills Details Visibility
+    document.addEventListener("click", function (e) {
+        if (e.target.closest(".toggle-skills-details")) {
+            const button = e.target.closest(".toggle-skills-details");
+            const detailsSection = button.closest(".skills-entry").querySelector(".skill-details-section");
+            const isExpanded = button.getAttribute("data-expanded") === "true";
+
+            if (isExpanded) {
+                // Collapse details
+                detailsSection.style.display = "none";
+                button.innerHTML = '<i class="bi bi-chevron-down"></i>';
+                button.setAttribute("data-expanded", "false");
+            } else {
+                // Expand details
+                detailsSection.style.display = "block";
+                button.innerHTML = '<i class="bi bi-chevron-up"></i>';
+                button.setAttribute("data-expanded", "true");
+            }
+        }
+    });
+    // Update Skills Name dynamically
+    document.addEventListener("input", function (e) {
+        if (e.target.classList.contains("skill-name")) {
+            const schoolNameInput = e.target.value.trim();
+            const label = e.target.closest(".skills-entry").querySelector(".form-label.fw-bold");
+            label.textContent = schoolNameInput || "(Not specified)";
+        }
+    });
+    // Remove Entry
+    document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("remove-entry")) {
+            e.target.closest(".employment-entry, .education-entry, .skills-entry").remove();
+        }
+    });
+
+
 </script>
 
 @endsection

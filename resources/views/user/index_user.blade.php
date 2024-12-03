@@ -269,7 +269,7 @@
                         <p class="card-text mb-3 text-secondary ">{{ $job->created_at->diffForHumans() }}</p>
                         
                         <div class="d-flex gap-2 mb-4">
-                        <a href="{{route('apply')}}" type="button" class="btn btn-dark">Apply Now</a>
+                        <a href="{{ route('apply', ['job_id' => $job->id]) }}" type="button" class="btn btn-dark">Apply Now</a>
                         
                         </div>
 
@@ -292,6 +292,8 @@
 
 
     <script>
+
+
         // Salary dropdown functionality
         document.addEventListener('DOMContentLoaded', function () {
             const salaryTypeInputs = document.querySelectorAll('input[name="salaryType"]');
