@@ -200,11 +200,22 @@
                                 <!-- job Category -->
                                 <div class="mb-3">
                                 <label for="job_category" class="form-label">Job Category</label>
-                                        <input type="text" name="job_category" id="job_category" class="form-control @error('job_category') is-invalid @enderror" value="{{ old('job_category') }}">
-                                        @error('job_category')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
+                                <select name="job_category" id="job_category" class="form-select @error('job_category') is-invalid @enderror">
+                                        <option value="" disabled selected>Select a Job Category</option>
+                                        <option value="Information Technology" {{ old('job_category') == 'Information Technology' ? 'selected' : '' }}>Information Technology</option>
+                                        <option value="Business" {{ old('job_category') == 'Business' ? 'selected' : '' }}>Business</option>
+                                        <option value="Health Care" {{ old('job_category') == 'Health Care' ? 'selected' : '' }}>Health Care</option>
+                                        <option value="Engineering" {{ old('job_category') == 'Engineering' ? 'selected' : '' }}>Engineering</option>
+                                        <option value="Entrepreneur" {{ old('job_category') == 'Entrepreneur' ? 'selected' : '' }}>Entrepreneur</option>
+                                        <option value="Education" {{ old('job_category') == 'Education' ? 'selected' : '' }}>Education</option>
+                                        <option value="Law and Public Service" {{ old('job_category') == 'Law and Public Service' ? 'selected' : '' }}>Law and Public Service</option>
+                                        <option value="Trades and Skill Labor" {{ old('job_category') == 'Trades and Skill Labor' ? 'selected' : '' }}>Trades and Skill Labor</option>
+                                </select>
+                                @error('job_category')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                                 </div>
+
 
                                 <!-- additional info -->
                                 <div class="mb-3">
@@ -344,14 +355,23 @@
 
                         <!-- Job Category -->
                         <div class="mb-3">
-                                <label for="job_category">Job Category</label>
-                                <input type="text" name="job_category" id="job_category" 
-                                class="form-control @error('job_category') is-invalid @enderror" 
-                                value="{{ old('job_category', $job->job_category) }}">
+                                <label for="job_category" class="form-label">Job Category</label>
+                                <select name="job_category" id="job_category" class="form-select @error('job_category') is-invalid @enderror">
+                                        <option value="" disabled selected>Select a Job Category</option>
+                                        <option value="Information Technology" {{ old('job_category', $job->job_category) == 'Information Technology' ? 'selected' : '' }}>Information Technology</option>
+                                        <option value="Business" {{ old('job_category', $job->job_category) == 'Business' ? 'selected' : '' }}>Business</option>
+                                        <option value="Health Care" {{ old('job_category', $job->job_category) == 'Health Care' ? 'selected' : '' }}>Health Care</option>
+                                        <option value="Engineering" {{ old('job_category', $job->job_category) == 'Engineering' ? 'selected' : '' }}>Engineering</option>
+                                        <option value="Entrepreneur" {{ old('job_category', $job->job_category) == 'Entrepreneur' ? 'selected' : '' }}>Entrepreneur</option>
+                                        <option value="Education" {{ old('job_category', $job->job_category) == 'Education' ? 'selected' : '' }}>Education</option>
+                                        <option value="Law and Public Service" {{ old('job_category', $job->job_category) == 'Law and Public Service' ? 'selected' : '' }}>Law and Public Service</option>
+                                        <option value="Trades and Skill Labor" {{ old('job_category', $job->job_category) == 'Trades and Skill Labor' ? 'selected' : '' }}>Trades and Skill Labor</option>
+                                </select>
                                 @error('job_category')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                        </div>
+                                </div>
+
 
                         <!-- Additional Information -->
                         <div class="mb-3">

@@ -38,7 +38,7 @@
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li><a href="{{ route('dashboard') }}" class="nav-link text-white"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
                         <li><a href="{{route('list_of_users')}}" class="nav-link text-white"><i class="bi bi-person-lines-fill me-2"></i>List of users</a></li>
-                        <li><a href="{{route('admin_reports')}}" class="nav-link text-white"><i class="bi bi-file-earmark-text me-2"></i>Reports</a></li>
+                        <li><a href="{{route('admin_reports')}}" class="nav-link text-white"><i class="bi bi-file-earmark-text me-2"></i>Contact Message</a></li>
                         <li><a href="{{route('admin_joblist')}}" class="nav-link text-white"><i class="bi bi-briefcase-fill me-2"></i>Job List</a></li>
                     </ul>
                     
@@ -73,7 +73,7 @@
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li><a href="{{ route('dashboard') }}" class="nav-link text-white"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
                         <li><a href="{{route('list_of_users')}}" class="nav-link text-white"><i class="bi bi-person-lines-fill me-2"></i>List of users</a></li>
-                        <li><a href="{{route('admin_reports')}}" class="nav-link text-white"><i class="bi bi-file-earmark-text me-2"></i>Reports</a></li>
+                        <li><a href="{{route('admin_reports')}}" class="nav-link text-white"><i class="bi bi-file-earmark-text me-2"></i>Contact Message</a></li>
                         <li><a href="{{route('admin_joblist')}}" class="nav-link text-white"><i class="bi bi-briefcase-fill me-2"></i>Job List</a></li>
                     </ul>
                     <div class="dropdown mt-auto">

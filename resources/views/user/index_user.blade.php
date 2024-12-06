@@ -4,10 +4,10 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 w-100 shadow-sm">
         <div class="container">
-            <div class="d-flex align-items-center gap-1">
-                <img src="assets/img/Job Hive_icon.png" class="navbar-brand m-0" alt="Job Finder Logo" style="max-width: 100px; max-height: 100px; object-fit: contain;">
+            <a href="{{ route('index_user') }}" class="d-flex align-items-center gap-1 text-decoration-none">
+                <img src="{{ URL('assets/img/Job Hive_icon.png')}}" class="navbar-brand m-0" alt="Job Finder Logo" style="max-width: 100px; max-height: 100px; object-fit: contain;">
                 <h1 class="mb-0 fw-bold" style="color: #d7a343;font-family: Poppins;">Find Your Next Job</h1>
-            </div>
+            </a>
            
             <form action="{{ route('jobs.search') }}" method="GET" class="container-fluid p-3" >
             @csrf
@@ -23,6 +23,17 @@
                         <div class="col-12 col-md">
                             <input type="text" name="location" class="form-control" placeholder="Location">
                         </div>
+                        <select name="classification" class="form-select" id="classification" style="width: 160px;">
+                            <option value="" selected disabled>Job categories</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Business">Business</option>
+                            <option value="Health Care">Health Care</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Entrepreneur">Entrepreneur</option>
+                            <option value="Education">Education</option>
+                            <option value="Law and Public Service">Law and Public Service</option>
+                            <option value="Trades and Skill Labor">Trades and Skill Labor</option>
+                        </select>
                         <!-- Search Button -->
                         <div class="col-12 col-md-auto">
                             <button class="btn btn-success w-100" type="submit">
@@ -217,7 +228,7 @@
                 <div class="col-md-4 mb-4">
                     <div class="card job-card h-100 shadow-sm">
                         <div class="card-body">
-                            <img src="{{'storage/' . $job->job_img }}" class="img-fluid mb-3" alt="IT Jobs" style="height:50px; width:100px;">
+                            <img src="{{asset ('storage/' . $job->job_img) }}" class="img-fluid mb-3" alt="IT Jobs" style="height:50px; width:100px;">
                             <h5 class="card-title">{{ $job->title }}</h5>
                             <p class="card-text">{{ $job->company_name  }}</p>
                             <div class="mb-3">
@@ -249,13 +260,13 @@
                         <div class="container-fluid">
                         
                         <div class="position-relative mb-3">
-                                <img src="{{ asset('storage/' . $job->job_cover_photo) }}"class="card-img-top" 
+                                <img src="{{ $job->job_cover_photo ? asset('storage/' . $job->job_cover_photo) : asset('assets/img/default-image.jpg') }}"class="card-img-top" 
                                 alt="Cover Photo" 
                                 style="height: 250px; object-fit: cover;" >
                         </div>
 
                         <div class="position-relative mb-3">
-                                <img src="{{ asset('storage/' . $job->job_img) }}" class="card-img-top" 
+                                <img src="{{ $job->job_img ? asset('storage/' . $job->job_img) : asset('assets/img/default-image.jpg') }}" class="card-img-top" 
                                 alt="Cover Photo" 
                                 style="height: 50px; width: 100px; object-fit: cover;">
                         </div>
