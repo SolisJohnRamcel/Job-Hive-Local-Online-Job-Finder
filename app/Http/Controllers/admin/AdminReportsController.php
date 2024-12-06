@@ -13,4 +13,11 @@ class AdminReportsController extends Controller
         $contact = Contact::all();
         return view('admin.page.admin_reports', compact('contact'));
     }
+    public function deleteContact($id)
+    {
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
+
+        return back()->with('success', 'Contact message deleted successfully.');
+    }
 }

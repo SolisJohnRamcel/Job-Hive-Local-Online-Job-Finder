@@ -16,5 +16,13 @@ class ListofUsersController extends Controller
         
         return view('admin.page.list_of_users', compact('users'));
     }
+    public function deleteUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return back()->with('success', 'User deleted successfully.');
+    }
+
 
 }

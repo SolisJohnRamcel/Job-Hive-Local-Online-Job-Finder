@@ -70,6 +70,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin_joblist', [AdminJoblistController::class, 'admin_joblist'])->name('admin_joblist');
     Route::get('/admin_reports', [AdminReportsController::class, 'admin_reports'])->name('admin_reports');
     Route::get('/list_of_users', [ListofUsersController::class, 'list_of_users'])->name('list_of_users');
+    Route::delete('/admin/contact/{id}', [AdminReportsController::class, 'deleteContact'])->name('admin.contact.delete');
+    Route::delete('/admin/user/{id}', [ListofUsersController::class, 'deleteUser'])->name('admin.user.delete');
 });
 
 Route::middleware(['auth', 'employer'])->group(function () {

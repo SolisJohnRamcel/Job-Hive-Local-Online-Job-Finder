@@ -18,6 +18,7 @@
                 <th>Phone</th>
                 <th>Message</th>
                 <th>Date</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,13 @@
                     <td>{{ $con->phone ?? 'N/A' }}</td>
                     <td>{{ $con->message }}</td>
                     <td>{{ $con->created_at }}</td>
+                    <td>
+                        <form action="{{ route('admin.contact.delete', $con->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this message?')">Delete</button>
+                        </form>
+                    </td>
                 </tr>
         @endforeach
         </tbody>

@@ -26,8 +26,12 @@
         <td>{{ $user->name }}</td>
         <td>{{ $user->jobrole }}</td>
         <td>
-            <button class="btn btn-danger btn-sm">Delete</button>
-            <button class="btn btn-secondary btn-sm">Disable</button>
+             <!-- Delete Button -->
+             <form action="{{ route('admin.user.delete', $user->id) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+            </form>
             <!-- View Profile Button -->
             <button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#profileModal{{ $user->id }}" 
                 onclick="openProfile('{{ $user->name }}', '{{ $user->classification }}', '{{ $user->job_role }}', 
