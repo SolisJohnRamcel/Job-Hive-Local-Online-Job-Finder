@@ -20,6 +20,8 @@ Route::middleware('guest')->group(function () {
 
     Route::get('/signup',  [SignupController::class, 'create'])->name('signup');
     Route::post('/signup', [SignupController::class, 'store'])->name('signup.store');
+    Route::post('/signup_emp', [SignupController::class, 'storeemployer'])->name('signup.employer');
+    Route::get('/signup_employer',  [SignupController::class, 'employeracc'])->name('signup_employer');
 
 
     Route::get('/resetpass',  [Resetpass::class, 'resetpass']);

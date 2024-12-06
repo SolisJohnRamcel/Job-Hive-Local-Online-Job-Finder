@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('assets/img/Job Hive_icon.png') }}" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +36,7 @@
                     
                     <div class="dropdown mt-auto">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
-                            <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="" width="32" height="32" class="rounded-circle me-2">
+                            <img src="{{Auth::user()->profile_image ? asset('storage/' . Auth::user()->profile_image) : asset('assets/img/default-avatar.jpg')}}" alt="" width="32" height="32" class="rounded-circle me-2">
                             <strong>{{ Auth::user()->name }}</strong>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -70,7 +71,7 @@
                     </ul>
                     <div class="dropdown mt-auto">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
-                            <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="" width="32" height="32" class="rounded-circle me-2">
+                            <img src="{{Auth::user()->profile_image ? asset('storage/' . Auth::user()->profile_image) : asset('assets/img/default-avatar.jpg')}}" alt="" width="32" height="32" class="rounded-circle me-2">
                             <strong>{{ Auth::user()->name }}</strong>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">

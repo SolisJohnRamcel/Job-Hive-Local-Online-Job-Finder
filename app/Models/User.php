@@ -22,6 +22,7 @@ class User extends Authenticatable
         'password',
         'bio',
         'jobrole',
+        'usertype'
        
        
      
@@ -49,4 +50,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function companyProfile()
+    {
+    return $this->hasOne(CompanyProfile::class);
+    }
+
 }

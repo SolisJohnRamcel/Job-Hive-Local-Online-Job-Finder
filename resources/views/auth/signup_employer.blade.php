@@ -15,10 +15,11 @@
                         <!-- Right Side - signin Form -->
                         <div class="col-lg-6 bg-white p-4">
                             <h1 class="mb-1 h2 fw-bold">Sign Up to JobHive</h1>
-                            <p>Welcome to JobHive! Enter your email to get started.</p>
-                            <form id="acc_registerForm" class="needs-validation" action="{{route('signup.store')}}" method="POST">
+                            <p>Welcome to JobHive! Enter your email to became an Employer.</p>
+                            <form id="acc_registerForm" class="needs-validation" action="{{route('signup.employer')}}" method="POST">
                                 @csrf
-                                <div class="g-3 row">
+                                <input type="hidden" name="usertype" id="user_type" value="employer">
+                                <div class="g-3 row">      
                                     <div class="col-12 mb-2">
                                         <input placeholder="First Name" id="formSignupfname" class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{ old('name') }}">
                                         @error('name')
@@ -63,8 +64,8 @@
 
                                     <div class="text-center mb-3">
                                         <div>
-                                            Are you an employer? 
-                                            <a href="/signup_employer" class="text-decoration-none fw-semibold" style="color: #d49326;">Register here</a>
+                                            Are you a jobseeker? 
+                                            <a href="/signup" class="text-decoration-none fw-semibold" style="color: #d49326;">Register here</a>
                                         </div>
                                     </div>
                                

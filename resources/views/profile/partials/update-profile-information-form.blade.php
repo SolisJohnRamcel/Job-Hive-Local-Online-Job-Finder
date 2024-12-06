@@ -34,7 +34,7 @@
             <div class="d-flex align-items-start">
                 <div class="position-relative">
                     <div class="bg-white rounded-circle p-1">
-                        <img src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) : asset('assets/img/Job Hive_icon.png') }}" alt="Profile Picture" width="120" height="120" class="rounded-circle border" style="object-fit: cover;">
+                        <img src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) : asset('assets/img/default-avatar.jpg') }}" alt="Profile Picture" width="120" height="120" class="rounded-circle border" style="object-fit: cover;">
                         <label for="profile_image" class="position-absolute bottom-0 end-0 mb-1 me-1">
                             <span class="btn btn-sm btn-dark rounded-circle">
                                 <i class="bi bi-pencil-fill"></i>
@@ -105,9 +105,7 @@
                 {{ __('Save') }}
             </button>
 
-            @if (session('status') === 'profile-updated')
-                <div class="text-success small">{{ __('Saved.') }}</div>
-            @endif
+           
         </div>
 
     </form>

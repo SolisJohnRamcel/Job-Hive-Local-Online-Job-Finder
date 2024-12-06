@@ -33,12 +33,12 @@
                     
                     <div class="dropdown mt-auto">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
-                            <img src="{{ URL('assets/img/Job Hive_icon.png')}}" alt="" width="32" height="32" class="rounded-circle me-2">
+                            <img src="{{Auth::user()->profile_image ? asset('storage/' . Auth::user()->profile_image) : asset('assets/img/default-avatar.jpg')}}" alt="" width="32" height="32" class="rounded-circle me-2">
                             <strong>{{ Auth::user()->name }}</strong>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                             <li><a class="dropdown-item" href="{{ route('employerprofile.edit') }}">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="employer_profile_page">Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
@@ -68,12 +68,12 @@
                     </ul>
                     <div class="dropdown mt-auto">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
-                            <img src="{{ URL('assets/img/Job Hive_icon.png')}}" alt="" width="32" height="32" class="rounded-circle me-2">
+                            <img src="{{Auth::user()->profile_image ? asset('storage/' . Auth::user()->profile_image) : asset('assets/img/default-avatar.jpg')}}" alt="" width="32" height="32" class="rounded-circle me-2">
                             <strong>{{ Auth::user()->name }}</strong>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow"> 
                             <li><a class="dropdown-item" href="{{ route('employerprofile.edit') }}">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="employer_profile_page">Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
@@ -103,6 +103,7 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets/js/nav_pills.js') }}"></script>
     <script src="{{ asset('assets/js/edit_profile.js') }}"></script>

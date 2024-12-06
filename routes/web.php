@@ -17,6 +17,7 @@ use App\Http\Controllers\employer\ApplicationRequestController;
 use App\Http\Controllers\employer\EmpDashboardController;
 use App\Http\Controllers\employer\EmpJoblistController;
 use App\Http\Controllers\employer\CompanyProfileController;
+use App\Http\Controllers\employer\EmployerProfilePageController;
 
 
 
@@ -29,7 +30,14 @@ use App\Http\Controllers\user\SavedResumeController;
 use App\Http\Controllers\user\ApplicationController;
 use App\Http\Controllers\user\ApplyController;
 
+use App\Http\Controllers\NotificationController;
+
 use App\Http\Controllers\ContactController;
+
+// routes/web.php
+Route::post('/mark-notification-as-read/{id}', [NotificationController::class, 'markAsRead'])->name('notification.markAsRead');
+
+
 
 
 Route::patch('/contact/{contacts}',[ContactController::class, 'update'])->name('contact.update');
@@ -66,6 +74,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth', 'employer'])->group(function () {
     Route::get('/employerprofile', [EmployerProfileController::class, 'edit'])->name('employerprofile.edit');
     Route::get('/application_request', [ApplicationRequestController::class, 'application_request'])->name('application_request');
+    Route::get('/application_sort', [ApplicationRequestController::class, 'sort'])->name('application.sort');
+
     Route::get('/emp_dashboard', [EmpDashboardController::class, 'emp_dashboard'])->name('emp_dashboard');
     Route::get('/emp_joblist', [EmpJoblistController::class, 'emp_joblist'])->name('emp_joblist');
 
@@ -76,6 +86,15 @@ Route::middleware(['auth', 'employer'])->group(function () {
     Route::get('/joblist', [EmpJoblistController::class, 'index'])->name('joblist.index');
 
     Route::get('/company_profile', [CompanyProfileController::class, 'company_profile'])->name('company_profile');
+    Route::post('/company-profile', [CompanyProfileController::class, 'storeCompanyProfile'])->name('company-profile.store');
+
+
+    Route::get('/employer_profile_page', [EmployerProfilePageController::class, 'employer_profile_page'])->name('employer_profile_page');
+
+    Route::get('applications/sort', [ApplicationRequestController::class, 'sort'])->name('application.sort');
+    Route::post('/application/update-status/{id}', [ApplicationRequestController::class, 'updateStatus'])->name('application.updateStatus');
+
+
 
 });
 Route::middleware(['auth', 'user'])->group(function () {
@@ -88,9 +107,15 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/apply/{job_id}', [ApplyController::class, 'apply'])->name('apply');
     Route::post('/apply', [ApplyController::class, 'store'])->name('apply.store');
 
+    Route::delete('/job-application/{application_id}', [ApplyController::class, 'destroy'])->name('application.delete');
+    // routes/web.php
+    
+
+
 });
 
 Route::middleware('auth')->group(function () {
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

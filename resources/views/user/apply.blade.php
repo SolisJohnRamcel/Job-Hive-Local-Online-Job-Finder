@@ -13,6 +13,8 @@
         <form id="applicationForm" action="{{ route('apply.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <input type="hidden" name="job_id" id="job_id" value="{{ $job->id }}">
+          <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id() }}">
+          <input type="hidden" name="status" id="application_status" value="waiting to be reviewed">
           <div class="row mb-3">
               <div class="col-md-6">
                   <label for="firstName" class="form-label">First Name</label>

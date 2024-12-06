@@ -275,6 +275,22 @@
 
                         <p class="card-text">{{ $job->additional_info }}</p>
                         </div>
+                        @if($job->companyProfile)
+                        <hr>
+                        <h5>Company Profile</h5>
+                        <div class="position-relative mb-3">
+                            <img src="{{ $job->companyProfile->logo ? asset('storage/' . $job->companyProfile->logo) : 'https://via.placeholder.com/150' }}"
+                                 alt="Company Logo" class="img-fluid mb-3" style="height: 100px; object-fit: contain;">
+                        </div>
+                        <p><strong>Name:</strong> {{ $job->companyProfile->company_name }}</p>
+                        <p><strong>Email:</strong> {{ $job->companyProfile->email }}</p>
+                        <p><strong>Description:</strong> {{ $job->companyProfile->description }}</p>
+                        <p><strong>Location:</strong> {{ $job->companyProfile->location }}</p>
+                        <p><strong>Website:</strong> <a href="{{ $job->companyProfile->website }}" target="_blank">{{ $job->companyProfile->website }}</a></p>
+                        <p><strong>Contact Person:</strong> {{ $job->companyProfile->contact_person }}</p>
+                        <p><strong>Contact Email:</strong> {{ $job->companyProfile->contact_email }}</p>
+                        <p><strong>Contact Phone:</strong> {{ $job->companyProfile->contact_phone }}</p>
+                        @endif
 
 
 

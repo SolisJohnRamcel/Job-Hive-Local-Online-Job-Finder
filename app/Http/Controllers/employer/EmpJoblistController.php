@@ -9,7 +9,11 @@ class EmpJoblistController extends Controller
 {
     public function emp_joblist()
     {
-        $joblist = Joblist::orderBy('created_at', 'desc')->get();
+        $joblist = Joblist::where('employer_id', auth()->id())
+                      ->with('companyProfile')
+                      ->orderBy('created_at', 'desc')
+                      ->get();
+
         return view('employer.page.emp_joblist', compact('joblist'));
     }
 
@@ -30,6 +34,15 @@ class EmpJoblistController extends Controller
             'job_cover_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'additional_info' => 'nullable|string',
         ]);
+
+        $companyProfile = auth()->user()->companyProfile;
+        if (!$companyProfile) {
+            return back()->with('error', 'Company profile not found!');
+        }
+
+        // Automatically assign the company profile ID
+        $validated['company_profile_id'] = $companyProfile->id;
+
         
    
         // Handle file uploads
@@ -54,6 +67,10 @@ class EmpJoblistController extends Controller
      */
     public function update(Request $request, Joblist $joblist)
     {
+        if ($joblist->employer_id !== auth()->id()) {
+            return back()->with('error', 'Unauthorized action!');
+        }
+    
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'company_name' => 'required|string|max:255',
@@ -85,6 +102,10 @@ class EmpJoblistController extends Controller
      */
     public function destroy(Joblist $joblist)
     {
+        if ($joblist->employer_id !== auth()->id()) {
+            return back()->with('error', 'Unauthorized action!');
+        }
+
         $joblist->delete();
         return back()->with('success', 'Job deleted successfully!');
     }
@@ -94,7 +115,9 @@ class EmpJoblistController extends Controller
         $sortOrder = $request->input('sortedby') === 'date_oldest' ? 'asc' : 'desc';
 
         // Fetch sorted job list
-        $joblist = Joblist::orderBy('created_at', $sortOrder)->get();
+        $joblist = Joblist::where('employer_id', auth()->id())
+                      ->orderBy('created_at', $sortOrder)
+                      ->get();
 
         return view('employer.page.emp_joblist', compact('joblist'));
     }

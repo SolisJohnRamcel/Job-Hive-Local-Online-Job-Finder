@@ -43,23 +43,23 @@
                         <td>{{ $job->created_at->diffForHumans() }}</td>
                         <td>{{ $job->title }}</td>
                         <td>
-                                <div class="d-flex flex-wrap gap-2">
-                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editJobModal{{ $job->id }}">
-                                        <i class="bi bi-pencil-square"></i> Edit
+                        <div class="d-flex flex-wrap gap-2">
+                                <button class="btn btn-warning btn-sm text-nowrap" data-bs-toggle="modal" data-bs-target="#editJobModal{{ $job->id }}">
+                                <i class="bi bi-pencil-square"></i> Edit
                                 </button>
 
-                                <form action="{{ route('joblist.destroy', $job->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">
+                                <form action="{{ route('joblist.destroy', $job->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm text-nowrap">
                                         <i class="bi bi-trash"></i> Delete
-                                        </button>
+                                </button>
                                 </form>
 
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ViewJobModal{{ $job->id }}">
-                                        <i class="bi bi-eye"></i> View
+                                <button class="btn btn-primary btn-sm text-nowrap" data-bs-toggle="modal" data-bs-target="#ViewJobModal{{ $job->id }}">
+                                <i class="bi bi-eye"></i> View
                                 </button>
-                                </div>
+                        </div>
                         </td>
                         </tr>
                         @endforeach
@@ -82,6 +82,7 @@
                         <div class="container-fluid">
                                 <form id="jobcreateForm" method="POST" action="{{ route('joblist.store') }}"enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="company_profile_id" id="companyprofile" value="{{ auth()->user()->companyProfile->id ?? '' }}">
                                 <!-- cover image -->
                                 <div class="position-relative mb-3">
                                         <!-- Cover Image -->
@@ -409,7 +410,23 @@
                         <p class="card-text mb-3 text-secondary ">{{ $job->created_at->diffForHumans() }}</p>
                         <p class="card-text">{{ $job->additional_info }}</p>
                         </div>
-
+                         <!-- Company Profile Details -->
+                    @if($job->companyProfile)
+                        <hr>
+                        <h5>Company Profile</h5>
+                        <div class="position-relative mb-3">
+                            <img src="{{ $job->companyProfile->logo ? asset('storage/' . $job->companyProfile->logo) : 'https://via.placeholder.com/150' }}"
+                                 alt="Company Logo" class="img-fluid mb-3" style="height: 100px; object-fit: contain;">
+                        </div>
+                        <p><strong>Name:</strong> {{ $job->companyProfile->company_name }}</p>
+                        <p><strong>Email:</strong> {{ $job->companyProfile->email }}</p>
+                        <p><strong>Description:</strong> {{ $job->companyProfile->description }}</p>
+                        <p><strong>Location:</strong> {{ $job->companyProfile->location }}</p>
+                        <p><strong>Website:</strong> <a href="{{ $job->companyProfile->website }}" target="_blank">{{ $job->companyProfile->website }}</a></p>
+                        <p><strong>Contact Person:</strong> {{ $job->companyProfile->contact_person }}</p>
+                        <p><strong>Contact Email:</strong> {{ $job->companyProfile->contact_email }}</p>
+                        <p><strong>Contact Phone:</strong> {{ $job->companyProfile->contact_phone }}</p>
+                    @endif
 
 
 

@@ -1,24 +1,15 @@
-@extends('layouts.app')
+@extends('employer.employer')
 
 @section('content')
-
-
 <div class="container">
-    @include('notifications.dropdown', ['notifications' => $notifications])
-
     <div class="card border-0 shadow-sm">
-        
         <div class="position-relative">
-            
             <!-- Cover Image -->
             <img src="{{ $user->cover_photo ? asset('storage/' . $user->cover_photo) : asset('assets/img/default-image.jpg') }}" class="card-img-top" alt="Cover Photo" style="height: 300px; object-fit: cover;">
         </div>
         
-        
         <!-- Profile Content -->
         <div class="card-body position-relative">
-
-        
             <!-- Edit Button -->
             <div class="d-flex justify-content-end mb-3">
             <button class="btn btn-dark btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#editProfileModal" style="z-index: 1000;">
@@ -51,7 +42,6 @@
 
 
 
-
 <!-- Add Modal -->
 <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -60,7 +50,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @include('profile.partials.update-profile-information-form')
+                @include('employer.profile.partials.update-profile-information-form')
             </div>
         </div>
     </div>
@@ -78,9 +68,4 @@
     }
 }
 </style>
-
-
-
-
-
 @endsection
