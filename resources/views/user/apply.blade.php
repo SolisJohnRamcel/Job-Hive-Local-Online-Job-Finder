@@ -82,7 +82,7 @@
           </div>
           <div class="mb-5">
               <label for="resume" class="form-label">Upload Resume</label>
-              <input type="file" class="form-control @error('resume') is-invalid @enderror" id="resume" name="resume">
+              <input type="file"  class="form-control @error('resume') is-invalid @enderror" id="resume" name="resume">
               @error('resume')
                   <div class="invalid-feedback">{{ $message }}</div>
               @enderror

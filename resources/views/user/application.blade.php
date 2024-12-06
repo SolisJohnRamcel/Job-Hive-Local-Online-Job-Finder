@@ -19,7 +19,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="sortByDropdown">
                         <li><a class="dropdown-item" href="#" onclick="filterJobsByStatus('all')">Show All</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="filterJobsByStatus('rejected')">Accepted</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="filterJobsByStatus('accepted')">Accepted</a></li>
                         <li><a class="dropdown-item" href="#" onclick="filterJobsByStatus('rejected')">Rejected</a></li>
                         <li><a class="dropdown-item" href="#" onclick="filterJobsByStatus('in-review')">In Review</a></li>
                         <li><a class="dropdown-item" href="#" onclick="filterJobsByStatus('interview-scheduled')">Interview Scheduled</a></li>
@@ -42,7 +42,7 @@
                     </thead>
                     <tbody>
                         @foreach($jobApplications as $index => $application)
-                        <tr data-status="{{ strtolower(str_replace(' ', '-', $application->status)) }}" onclick="selectRow(this)">
+                        <tr data-status="{{ strtolower(str_replace(' ', '-', $application->status)) }}" onclick="selectRow(this, {{ $index }})">
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $application->job->title }}</td>
                                 <td>{{ $application->first_name }} {{ $application->last_name }}</td>
@@ -71,24 +71,24 @@
 
 <!-- Modal -->
 @foreach($jobApplications as $index => $application)
-<div class="modal fade" id="jobActionModal" tabindex="-1" aria-labelledby="jobActionModalLabel" aria-hidden="true">
+<div class="modal fade" id="jobActionModal{{ $index }}" tabindex="-1" aria-labelledby="jobActionModalLabel{{ $index }}" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-dark" style="background-color: #d7a343;">
-                <h5 class="modal-title" id="jobActionModalLabel">Job Application Details</h5>
+                <h5 class="modal-title" id="jobActionModalLabel{{ $index }}">Job Application Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p><strong>Job Title:</strong> <span id="modalJobTitle"></span></p>
-                <p><strong>Status:</strong> <span id="modalJobStatus"></span></p>
-                <p class="mb-5"><strong>Date Applied:</strong> <span id="modalDateApplied"></span></p>
+                <p><strong>Job Title:</strong> <span id="modalJobTitle{{ $index }}"></span></p>
+                <p><strong>Status:</strong> <span id="modalJobStatus{{ $index }}"></span></p>
+                <p class="mb-5"><strong>Date Applied:</strong> <span id="modalDateApplied{{ $index }}"></span></p>
 
                 <div class="pdf-viewer" style="border: 1px solid #ddd; height: 500px; overflow: hidden;">
                     <iframe src="{{ asset('storage/' . $application->resume) }}" width="100%" height="100%" style="border: none;"></iframe>
                 </div>
 
                 <div class="mt-3">
-                    <form id="canceljobapplication" action="{{ route('application.delete', $application->id) }}" method="POST" style="display:inline;">
+                    <form id="canceljobapplication{{ $index }}" action="{{ route('application.delete', $application->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="button" class="btn btn-secondary" onclick="cancelApplication(event)">Cancel Application</button>
@@ -99,6 +99,7 @@
     </div>
 </div>
 @endforeach
+
 
 <script>
     function filterJobsByStatus(status) {
@@ -116,21 +117,22 @@
 }
 
 
-    function selectRow(row) {
-        // Get job details from the selected row
-        const jobTitle = row.cells[1].textContent; // Job Title
-        const jobStatus = row.cells[3].textContent; // Status
-        const dateApplied = row.cells[4].textContent; // Date Applied
+function selectRow(row, index) {
+    // Get job details from the selected row
+    const jobTitle = row.cells[1].textContent; // Job Title
+    const jobStatus = row.cells[3].textContent; // Status
+    const dateApplied = row.cells[4].textContent; // Date Applied
 
-        // Populate the modal with the job details
-        document.getElementById('modalJobTitle').textContent = `${jobTitle}`;
-        document.getElementById('modalJobStatus').textContent = jobStatus.trim();
-        document.getElementById('modalDateApplied').textContent = dateApplied;
+    // Populate the modal with the job details
+    document.getElementById(`modalJobTitle${index}`).textContent = `${jobTitle}`;
+    document.getElementById(`modalJobStatus${index}`).textContent = jobStatus.trim();
+    document.getElementById(`modalDateApplied${index}`).textContent = dateApplied;
 
-        // Show the modal
-        const jobActionModal = new bootstrap.Modal(document.getElementById('jobActionModal'));
-        jobActionModal.show();
-    }
+    // Show the correct modal
+    const jobActionModal = new bootstrap.Modal(document.getElementById(`jobActionModal${index}`));
+    jobActionModal.show();
+}
+
 
     function cancelApplication(event) {
     event.preventDefault(); // Prevent the default button behavior

@@ -14,17 +14,13 @@
         <!-- Collapsible Content -->
         <div class="collapse navbar-collapse" id="navbarContent">
             <!-- Search Form -->
-            <form class="d-flex mx-lg-3 my-2 my-lg-0 flex-grow-1" style="max-width: 500px;" role="search">
-                <input class="form-control me-2" type="search" placeholder="Find Jobs" aria-label="Search">
-                <a href="/joblist" class="btn" style="background-color: #f7c15d;" type="submit">
-                    <img src="{{ URL('assets/img/search_icon.png') }}" class="mt-1" width="16" height="16" alt="Search Icon">
-                </a>
-            </form>
+            
 
             <!-- Navigation Links -->
             <nav class="ms-lg-auto">
                 <div class="navbar-nav">
                     <x-navlink href="/">Home</x-navlink>
+                    <x-navlink href="/jobs">Jobs</x-navlink>
                     <x-navlink href="/about">About</x-navlink>
                     <x-navlink href="/contact">Contact</x-navlink>
                     <x-navlink2 href="/signin">Sign in</x-navlink2>

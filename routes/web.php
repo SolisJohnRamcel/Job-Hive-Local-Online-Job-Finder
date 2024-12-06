@@ -33,6 +33,7 @@ use App\Http\Controllers\user\ApplyController;
 use App\Http\Controllers\NotificationController;
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GuestJoblistController;
 
 // routes/web.php
 Route::post('/mark-notification-as-read/{id}', [NotificationController::class, 'markAsRead'])->name('notification.markAsRead');
@@ -58,9 +59,9 @@ Route::middleware('guest')->group(function () {
     Route::get('/career_advice', function () {
         return view('career_advice');
     });
-    Route::get('/joblist', function () {
-        return view('joblist');
-    });
+    Route::get('/jobs', [GuestJoblistController::class, 'jobs'])->name('jobs');
+    Route::get('/jobs/search', [GuestJoblistController::class, 'search'])->name('jobsearch');
+    
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -108,6 +109,9 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::post('/apply', [ApplyController::class, 'store'])->name('apply.store');
 
     Route::delete('/job-application/{application_id}', [ApplyController::class, 'destroy'])->name('application.delete');
+
+    Route::post('/generate-resume', [ResumeController::class, 'generate'])->name('generate.resume');
+
     // routes/web.php
     
 

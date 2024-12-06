@@ -7,9 +7,6 @@
     <div class="row bg-light shadow-sm py-3">
         <div class="col d-flex justify-content-center align-items-center position-relative">
             <h2 class="display-5 fw-bold mb-0" style="color: #d7a343; font-family: Poppins;">Create your resume</h2>
-            <div class="position-absolute end-0 me-3">
-                <i class="bi bi-three-dots-vertical display-6" data-bs-toggle="modal" data-bs-target="#dotsModal"></i>
-            </div>
         </div>
     </div>
 
@@ -57,41 +54,15 @@
                 </div>
                 <div class="modal-body">
                     <a href="{{route('saved_resume')}}" class="btn btn-dark w-100 mb-2">Saved Resume</a>
-                    <a href="#" class="btn btn-secondary w-100" data-bs-toggle="modal" data-bs-target="#reportModal">Report</a>
+
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Report Modal -->
-    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-dark" style="background-color: #d7a343;">
-                    <h5 class="modal-title" id="reportModalLabel">Submit a Report</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="reportDescription" class="form-label">Description</label>
-                            <textarea id="reportDescription" class="form-control" rows="4" placeholder="Describe the issue or report..."></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="reportEmail" class="form-label">Your Email</label>
-                            <input type="email" id="reportEmail" class="form-control" placeholder="Enter your email">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Submit Report</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- customize modal  -->
+    
     <div class="modal fade" id="customizemodal" tabindex="-1" aria-labelledby="customizeModal" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -100,7 +71,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="background-color: #F5F5F5;">
-                    <form>
+                    <form action="{{ route('generate.resume') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                         <!-- profile image -->
                         <div class="mb-2">
                             <label for="ResumeProfileImage" class="form-label">Upload Profile Image</label>
@@ -116,7 +88,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="formAboutme" class="form-label">About me</label>
-                            <textarea id="formAboutme" class="form-control" rows="4" placeholder="Briefly explain about yourself"></textarea>
+                            <textarea id="formAboutme" name="formAboutme" class="form-control" rows="4" placeholder="Briefly explain about yourself"></textarea>
                         </div>
 
                         <!-- contact section -->
@@ -158,12 +130,12 @@
                             <i class="bi bi-plus me-2 "></i>Add skills
                         </button>
                  
-                    </form>
+                  
                 </div>
                 <div class="modal-footer" style="background-color: #F5F5F5;">
-                    <button type="button" class="btn btn-secondary">Save</button>
-                    <button type="button" class="btn btn-dark">Print</button>
+                      <button type="submit" class="btn btn-dark">Generate Resume</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -190,22 +162,22 @@
         <div class="details-section">
             <div class="mb-2">
                 <label class="form-label">Job Title</label>
-                <input type="text" class="form-control job-title" placeholder="Job Title">
+                <input type="text" name="employment[][jobTitle]" class="form-control job-title" placeholder="Job Title">
             </div>
             <div class="mb-2">
                 <label class="form-label">Company</label>
-                <input type="text" class="form-control" placeholder="Company">
+                <input type="text" name="employment[][company]" class="form-control" placeholder="Company">
             </div>
             <div class="mb-2">
                 <label class="form-label">Start & End Date</label>
                 <div class="d-flex gap-2">
-                    <input type="month" class="form-control" placeholder="MM/YYYY">
-                    <input type="month" class="form-control" placeholder="MM/YYYY">
+                    <input type="month" name="employment[][startDate]" class="form-control" placeholder="MM/YYYY">
+                    <input type="month" name="employment[][endDate]" class="form-control" placeholder="MM/YYYY">
                 </div>
             </div>
             <div class="mb-2">
                 <label class="form-label">Description</label>
-                <textarea class="form-control" rows="3" placeholder="Describe your role..."></textarea>
+                <textarea class="form-control" name="employment[][description]" rows="3" placeholder="Describe your role..."></textarea>
             </div>
         </div>
         <button type="button" class="btn remove-entry text-danger"><i class="bi bi-trash-fill me-2"></i>Remove</button>
@@ -229,26 +201,26 @@
         <div class="education-details-section">
             <div class="mb-2">
                 <label class="form-label">School</label>
-                <input type="text" class="form-control school-name" placeholder="School">
+                <input type="text" name="education[][school]" class="form-control school-name" placeholder="School">
             </div>
             <div class="mb-2">
                 <label class="form-label">Degree</label>
-                <input type="text" class="form-control" placeholder="Degree">
+                <input type="text" name="education[][degree]" class="form-control" placeholder="Degree">
             </div>
             <div class="mb-2">
                 <label class="form-label">Start & End Date</label>
                 <div class="d-flex gap-2">
-                    <input type="month" class="form-control" placeholder="MM/YYYY">
-                    <input type="month" class="form-control" placeholder="MM/YYYY">
+                    <input type="month" name="education[][startDate]" class="form-control" placeholder="MM/YYYY">
+                    <input type="month" name="education[][endDate]" class="form-control" placeholder="MM/YYYY">
                 </div>
             </div>
             <div class="mb-2">
                 <label class="form-label">City</label>
-                <input type="text" class="form-control" placeholder="City">
+                <input type="text" name="education[][location]" class="form-control" placeholder="City">
             </div>
             <div class="mb-2">
                 <label class="form-label">Description</label>
-                <textarea class="form-control" rows="3" placeholder="Brief description"></textarea>
+                <textarea  name="education[][description]" class="form-control" rows="3" placeholder="Brief description"></textarea>
             </div>
         </div>
         <button type="button" class="btn remove-entry text-danger"><i class="bi bi-trash-fill me-2"></i>Remove</button>
@@ -272,7 +244,7 @@
         <div class="skill-details-section">
             <div class="mb-2">
                 <label class="form-label">Skill</label>
-                <input type="text" class="form-control skill-name" placeholder="Skill">
+                <input type="text" name="skills[]" class="form-control skill-name" placeholder="Skill">
             </div>
         </div>
         <button type="button" class="btn remove-entry text-danger"><i class="bi bi-trash-fill me-2"></i>Remove</button>
